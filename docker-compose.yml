@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: postgress
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mi_basedatos
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
