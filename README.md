@@ -5,8 +5,9 @@
 ## Entidades y campos 
 - **mascota**: id,nombre, especie, edad_estimada, tamaño, esta_vacunado, descripcion
 - **usuario**: id, nombre, email, numero, dirección, tiene_patio, tiene_mas_mascotas
-- **formularios_adopcion**: id, fecha, estado (puede ser tipo en proceso, rechazada, aprobada),
-comentario, id_usuario, id_mascota
+- **cuidador**: id, nombre,tipo(voluntario/casa_de_tránsito), animales_a_cargo, disponibilidad
+- **formularios_adopcion**(tabla intermediaria): id, fecha, estado (puede ser tipo en proceso, rechazada, aprobada),
+comentario,id_cuidador_a_cargo, id_usuario, id_mascota 
 
 ## Ideas de funciones
 - panel que muestre las solicitudes
