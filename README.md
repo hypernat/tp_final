@@ -17,4 +17,4 @@ comentario,id_cuidador_a_cargo, id_usuario, id_mascota
 
 ## Datos:
 - nuestro puerto es 5432
-- http://localhost:5432/index/health utilizo esto para saber si el servidor esta levantado
+- http://localhost:5432/index/health utilizo esto para saber si el servidor (BACKEND) esta levantado
