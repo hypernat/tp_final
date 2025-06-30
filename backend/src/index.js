@@ -1,21 +1,13 @@
 const express = require('express');
-const { Pool } = require('pg');
-
 const app = express();
-const port = 3000;
+app.use(express.json());
+const PORT = process.env.PORT || 5432;
 
-const pool = new Pool({
-  user: 'postgress',
-  host: 'localhost',
-  database: 'mi_basedatos',
-  password: 'password',
-  port: 5432,
+app.get('/index/health',(req, res) => {
+  res.json({ status: 'OK' });
 });
 
-app.use(express.json());
 
-
-
-app.listen(port, () => {
-  console.log(`Servidor backend escuchando en http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log("Servidor backend escuchando en PORT",PORT);
 });
