@@ -20,7 +20,19 @@ comentario,id_cuidador_a_cargo, id_usuario, id_mascota
 ```
 ./backend/scripts/db.sql
 ```
-- para levantar el backend del proyecto correr:
+- Para levantar el backend del proyecto correr:
 ```
 make run-backend
+```
+- Si solo se quiere levantar la base de datos:
+```
+make start-db
+```
+- Si se quiere parar la base de datos utilizo:
+```
+make stop-db
+```
+-Si se quiere solo levantar el servidor del backend
+```
+make start-backend
 ```
