@@ -1,6 +1,6 @@
 # Trabajo Práctico 2
 - Desarrollo de un sitio web con frontend, backend y base de datos. En construcción 👷🏽🚧
-- Plataforma de adopción de mascotas!! 🐈🦜🐇
+- Plataforma de adopción de mascotas!! 🐈🦜🐇 
 
 ## Entidades y campos 
 - **mascota**: id,nombre, especie, edad_estimada, tamaño, esta_vacunado, descripcion
@@ -16,5 +16,23 @@ comentario,id_cuidador_a_cargo, id_usuario, id_mascota
 - ver las mascotas disponibles
 
 ## Datos:
-- nuestro puerto es 5432
-- http://localhost:5432/index/health utilizo esto para saber si el servidor (BACKEND) esta levantado
+- Se puede encontrar la estructura de la base de datos en el archivo:
+```
+./backend/scripts/db.sql
+```
+- Para levantar el backend del proyecto correr:
+```
+make run-backend
+```
+- Si solo se quiere levantar la base de datos:
+```
+make start-db
+```
+- Si se quiere parar la base de datos utilizo:
+```
+make stop-db
+```
+-Si se quiere solo levantar el servidor del backend
+```
+make start-backend
+```
