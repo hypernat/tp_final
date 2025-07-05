@@ -32,7 +32,11 @@ make start-db
 ```
 make stop-db
 ```
--Si se quiere solo levantar el servidor del backend
+- Si se quiere solo levantar el servidor del backend
 ```
 make start-backend
+```
+- Si se quiere solo levantar el servidor del frontend
+```
+make start-frontend
 ```
