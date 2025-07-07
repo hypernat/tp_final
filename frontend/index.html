@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>PetHub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adopaw – Plataforma de Adopción</title>  
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
-  <h1>¡Bienvenido a PetHub!</h1>
+  <!-- Navbar -->
+  <nav class="navbar is-primary">
+    <div class="navbar-brand">
+      <span class="navbar-item title has-text-white">🐾 Adopaw</span>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a href="index.html" class="navbar-item">Inicio</a>
+        <a href="mascotas.html" class="navbar-item">Mascotas</a>
+        <a href="formulario.html" class="navbar-item">Formulario</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <section class="section">
+    <!-- Página Inicio -->
+    <div id="inicio">
+      <h1 class="title">Bienvenido a Adopaw</h1>
+      <p class="subtitle">La plataforma para encontrar a tu nuevo mejor amigo adoptando de manera responsable 🐶🐱.</p>
+      <p>Usá el menú para explorar.</p>
+    </div>
+
+    <!-- Página Mascotas -->
+    <div id="mascotas" class="hidden">
+      <h2 class="title">Mascotas en Adopción</h2>
+      <div id="mascotas-list" class="columns is-multiline"></div>
+    </div>
+
+  </section>
+
 </body>
 </html>
+
