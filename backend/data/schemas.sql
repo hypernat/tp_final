@@ -32,7 +32,7 @@ create table formularios_adopcion(
     id_mascota INT NOT NULL REFERENCES mascotas(id),
     id_usuario INT NOT NULL REFERENCES usuarios(id),
     id_cuidador INT NOT NULL REFERENCES cuidador(id),
-    comentario VARCHAR(200),
+    comentario VARCHAR(200)
 );
 
 
