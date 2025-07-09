@@ -1,9 +1,7 @@
 <nav class="navbar is-transparent">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      🐾
-     
-
+    <a class="navbar-item has-text-white" href="/">
+      <strong>PETHUB</strong>
     </a>
     <div class="navbar-burger js-burger" data-target="navbarExampleTransparentExample">
       <span></span>
@@ -31,7 +29,7 @@
   // Código para que funcione el burger en responsive
   document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.navbar-burger');
-    const menu = document.getElementById('navbarMenu');
+    const menu = document.getElementById('navbarExampleTransparentExample');
     if (burger && menu) {
       burger.addEventListener('click', () => {
         burger.classList.toggle('is-active');
