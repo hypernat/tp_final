@@ -203,46 +203,38 @@ h1, h2, h3 {
   line-height: 1.6;
 }
 
-.requisitos {
-  display: flex;
+.adoptar {
+  width: 100%;
 }
 
-.requisitos h2{
-  font-size: 90px;
+.adoptar-content {
+  width: 100vw; 
+  height: 300px; 
   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../imagenes/imagen3.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contenido h2{
+  font-size: 90px;
   color: rgba(255, 252, 252, 0.812);
   line-height: 1.6;
-  text-align: center;
   font-weight: 400;
   font-family: 'Bebas_Neue', sans-serif;
-  padding-top: 80px
+  margin-bottom: 20px; 
+  padding-top: 0; 
 }
 
-.radop-content {
-  background-color: #000000;
-  color: white;
-  padding: 100px;
-  width: 100%;
-}
-
-.radop-content h3{
-  font-family: 'Poppins';
-  font-weight: 800;
-  font-size: 32px;
-}
-
-.radop-content ul{
-  font-size: 20px;
-  padding: 10px;
-  color: rgba(137, 137, 137, 0.602);
-}
 
 .btn-2 {
   display: block;
-  margin: 0 auto 0 20px;
+  margin: 0 auto;
   width: max-content; /* para que no ocupe todo el ancho */
   background-color: #ffffff;
   color: rgb(0, 0, 0);
