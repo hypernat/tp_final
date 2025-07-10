@@ -1,15 +1,14 @@
 services:
   db:
     image: postgres:17
-    restart: always
-    environment:
-      POSTGRES_USER: postgress
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mi_basedatos
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./.volumes/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=pethub
 
 volumes:
   pgdata:
