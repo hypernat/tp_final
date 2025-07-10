@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 // funciones
 const {
     getAllMascotas,
+    getOneMascota,
 } = require('./db.js')
 
 // ruta health
@@ -29,7 +30,10 @@ app.get('/index/mascotas', async (req, res) => {
   res.json(mascotas);
 });
 
-
+app.get('/index/mascotas/:id', async (req, res) => {
+  const mascota = await getOneMascota(req.params.id);
+  res.json(mascota);
+});
 
 
 
