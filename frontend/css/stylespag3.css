@@ -1,0 +1,56 @@
+.navbar.is-transparent {
+    background-color: black !important;
+    width: 100%;
+    padding: 1rem;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: none;
+  }
+  .navbar-item:hover {
+    color: white !important;
+  }
+  .navbar-item{
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .footer {
+    background-color: #bebebe;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;           
+    padding: 2rem 1rem;     
+    color: white;           
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    color: white;
+  }
+  
+  .link h3 {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 12px
+  
+  }
+  
+  .footer a {
+    color: #ffffff;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-family: 'Bebas_Neue';
+    font-weight: 400;
+  }
+  
+  .footer a:hover {
+    color: #000000;        
+  }
+  
+  .footer a:active {
+    color: #83f5f5;        
+  }
