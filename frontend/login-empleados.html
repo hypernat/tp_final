@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Empleados – PETHUB</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+	  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+  <div class="login-container box">
+    <h1 class="title has-text-centered">Login Empleados</h1>
+    <form id="login-form">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Contraseña</label>
+        <div class="control">
+          <input class="input" type="password" name="password" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <button class="button is-primary is-fullwidth" type="submit">Ingresar</button>
+        </div>
+      </div>
+
+      <p id="login-message" class="has-text-danger has-text-centered mt-2"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      const response = await fetch('/empleados/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('empleadoToken', result.token);
+        window.location.href = '/panel-empleados.html';
+      } else {
+        document.getElementById('login-message').textContent = result.message;
+      }
+    });
+  </script>
+</body>
+</html>
