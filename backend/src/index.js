@@ -1,8 +1,6 @@
 const express = require('express');
-
 const app = express();
 app.use(express.json());
-
 const PORT = process.env.PORT || 3000;
 
 // funciones
@@ -15,7 +13,6 @@ const {
 app.get('/index/health', (req, res) => {
   res.json({ status: 'todo ok por aca' });
 });
-
 app.listen(PORT, () => {
   console.log("Servidor backend escuchando en PORT",PORT);
 });
@@ -29,7 +26,6 @@ app.get('/index/mascotas', async (req, res) => {
   const mascotas = await getAllMascotas();
   res.json(mascotas);
 });
-
 app.get('/index/mascotas/:id', async (req, res) => {
   const mascota = await getOneMascota(req.params.id);
   res.json(mascota);

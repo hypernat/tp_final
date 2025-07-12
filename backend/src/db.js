@@ -4,9 +4,11 @@ const dbClient = new Pool({
   user: 'postgres',
   password: 'password123',
   host: 'localhost',
-  port: 5432,
+  port: 5433,
   database: 'pethub',
 })
+
+// manejar errores
 
 async function getAllMascotas() {
     const result = await dbClient.query('SELECT * FROM mascotas;');
