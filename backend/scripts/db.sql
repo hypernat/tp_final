@@ -35,5 +35,11 @@ create table formularios_adopcion(
     comentario VARCHAR(200)
 );
 
+CREATE TABLE empleados (
+    id SERIAL PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
 
 
