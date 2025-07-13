@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PETHUB – Plataforma de Adopción</title>  
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylespag3.css">
+  
+  <style>
+  .hidden { display: none; }
+  </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <!-- Página Inicio -->
+  <script>
+  fetch('navbar.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('navbar-container').innerHTML = html;
+  });
+ </script>
+ <header class="header">
+ <div class="header-content container">
+  <h1>¿Cómo adoptar?</h1>
+</div>
+</header>
+<section class="stop">
+    <div class="stop-content">
+        <h1>ANTES DE ADOPTAR</h1>
+        <h2>Adoptá con conciencia y corazón</h2>
+        <p>
+            Al pensar en adoptar, es crucial tener en cuenta diversos factores para garantizar una convivencia armoniosa.
+            Evalúa el espacio disponible en tu hogar, el tiempo que puedes dedicar al juego y paseo, así como los costos 
+            asociados con la alimentación, atención veterinaria y cuidado durante las vacaciones. Asegúrate de que tu elección de mascota
+            se ajuste a tu estilo de vida y a la cantidad de tiempo que puedes comprometer.
+
+            Es importante recordar que un animal de compañía puede tener una vida promedio de entre 14 y 18 años,
+            durante todo ese tiempo dependerá de vos. Adoptar implica asumir la responsabilidad de su bienestar 
+            y felicidad a lo largo de su vida.
+        </p>
+    </div>
+</section>
+<section class="Pasos para adoptar">
+    <div class="pasos-content container">
+        <ol>
+            <li>Ir a la seccion mascotas</li>
+            <li>Clickear la mascota que quieras adoptar</li>
+            <li>Clickear el botón que dice adoptar</li>
+            <li>Luego, te mandará a una nueva pestaña, que será el formulario que tendrás que completar</li>
+            <ol>
+                <li>Nombre del adoptante (obligatorio)</li>
+                <li>Email del adoptante (obligatorio)</li>
+                <li>Teléfono del adoptante (obligatorio)</li>
+                <li>Dirección del adoptante (obligatorio)</li>
+                <li>Elegir si tenes patio y/o otras mascotas (opcional)</li>
+                <li>Te dejamos una cajita para que nos cuentes acerca de vos! (opcional)</li>
+            </ol>
+            <li>Una vez completo todos los campos, clickea el botón "Enviar solicitud"</li>
+            <li>Te mostrará que el formulario se ha enviado con éxito!</li>
+        </ol>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content container">
+      <div class="link">
+        <h3>PETHUB</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mascota">Mascotas</a></li>
+          <li><a href="comoadoptar.html">¿Cómo adoptar?</a></li>
+        </ul>
+      </div>
+  </footer>
+</body>
+</html>

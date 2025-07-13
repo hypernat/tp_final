@@ -1,0 +1,303 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-top: 4rem; /* espacio para el navbar */
+  background: rgb(255, 255, 255);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding-top:70px ;
+}
+
+
+.navbar.is-transparent {
+  background-color: black !important;
+  width: 100%;
+  padding: 1rem;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: none;
+}
+.navbar-item:hover {
+  color: white !important;
+}
+.navbar-item{
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bebas_Neue' ;
+  src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../imagenes/imagen1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* empieza desde arriba */
+  text-align: center;
+  padding: 230px 1rem 2rem;  /* separa del navbar arriba */
+  color: white;
+}
+.logo{
+  font-size: 4rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 2rem;
+}
+.header-content {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.header-content h1{
+  font-size: 30px;
+  color: rgba(226, 226, 226, 0.674);
+}
+.header-content p{
+  font-size: 20px;
+  padding: 10px;
+  color: rgba(226, 226, 226, 0.602);
+}
+
+.animales-destacados{
+  padding: 100px 0;
+  position: relative;
+}
+#mascotas-menos-solicitudes {
+  display: flex;
+  gap: 1rem;
+}
+.mascota-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.intro{
+  height: 300px; 
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../imagenes/imagen2.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.intro h2{
+  font-size: 4rem;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.intro p{
+  font-size: 20px;
+  padding: 10px;
+  font-weight: 400;
+  color: rgba(226, 226, 226, 0.602);
+  text-align: center;
+}
+.intro h3{
+  font-size: 20px;
+  color: rgba(226, 226, 226, 0.674);
+  font-weight: 700;
+  text-align: center;
+}
+.preguntas-frecuentes{
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 4rem;
+  border-radius: 10px;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.preguntas-group {
+  margin-top: 2rem;
+}
+
+.preguntas-group .pregunta {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 8rem;
+}
+
+.preguntas-group .pregunta img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 70%; 
+  border: 3px solid #000000;
+}
+
+.preguntas-group .pregunta .texto {
+  flex: 2;
+}
+
+.preguntas-group .pregunta h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #000000;
+}
+
+.preguntas-group .pregunta p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.adoptar {
+  width: 100%;
+}
+
+.adoptar-content {
+  width: 100vw; 
+  height: 300px; 
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../imagenes/imagen3.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contenido h2{
+  font-size: 90px;
+  color: rgba(255, 252, 252, 0.812);
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'Bebas_Neue', sans-serif;
+  margin-bottom: 20px; 
+  padding-top: 0; 
+}
+
+
+.btn-2 {
+  display: block;
+  margin: 0 auto;
+  width: max-content; /* para que no ocupe todo el ancho */
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-2:hover {
+  background-color: #7ec8e8;
+  color:white;
+}
+
+.footer {
+  background-color: #bebebe;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;           
+  padding: 2rem 1rem;     
+  color: white;           
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 1rem;
+  color: white;
+}
+
+.link h3 {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 12px
+
+}
+
+.footer a {
+  color: #ffffff;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: 'Bebas_Neue';
+  font-weight: 400;
+}
+
+.footer a:hover {
+  color: #000000;        
+}
+
+.footer a:active {
+  color: #83f5f5;        
+}
+
+

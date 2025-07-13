@@ -1,0 +1,40 @@
+<nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item has-text-white" href="/">
+      <strong>PETHUB</strong>
+    </a>
+    <div class="navbar-burger js-burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="index.html"> Home </a>
+      <a class="navbar-item" href="mascotas.html"> Mascotas </a>
+      <a class="navbar-item" href="comoadoptar.html"> ¿Cómo adoptar? </a>
+
+     
+    </div>
+  </div>
+
+    
+  
+</nav>
+
+<script>
+  // Código para que funcione el burger en responsive
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.getElementById('navbarExampleTransparentExample');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    }
+  });
+</script>

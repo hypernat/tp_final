@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PETHUB – Plataforma de Adopción</title>  
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+  .hidden { display: none; }
+  </style>
+</head>
+<body>
+   <div id="navbar-container"></div>
+      <!-- Página Inicio -->
+    <script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('navbar-container').innerHTML = html;
+    });
+   </script>
+   <header class="header">
+      <div class="logo">PETHUB</div>
+   <div class="header-content container">
+    <h1>¡Bienvenido a PETHUB!</h1>
+     <p>
+    Pethub es una plataforma dedicada a la adopción responsable de animales, creada para conectar mascotas que buscan un hogar
+    con personas que desean brindarles cariño y cuidado. Nuestro objetivo es facilitar el proceso de adopción,
+    promoviendo la tenencia responsable y ofreciendo información útil para que cada encuentro sea una experiencia positiva.
+    
+    En Pethub encontrarás perfiles detallados de animales disponibles y sus caracteristicas. 
+    Además, contamos con un formulario de adopción simple y accesible para que puedas iniciar el proceso de manera rápida y segura.</p>
+
+    <p>¡Dale una nueva oportunidad a una mascota y descubrí un amigo para toda la vida!</p>
+    
+     </div>
+     </header>
+
+
+     <section class="animales-destacados">
+      <div class="animales-content container">
+        <h2>⭐¡Conocé a nuestras estrellas en adopción!⭐</h2>
+        <div id="mascotas-menos-solicitudes"></div>  <!-- Este contenedor recibe las mascotas -->
+        <script>
+          fetch('http://localhost:3000/index/mascotas/menos-solicitudes')
+            .then(response => response.json())
+            .then(mascotas => {
+              const contenedor = document.getElementById('mascotas-menos-solicitudes');
+              contenedor.innerHTML = ''; // limpiamos por las dudas
+        
+              mascotas.forEach(mascota => {
+                const div = document.createElement('div');
+                div.classList.add('mascota-card');
+        
+                div.innerHTML = `
+                  <img src="http://localhost:3000/imagenes/${mascota.imagen}" alt="${mascota.nombre}" style="width:200px; border-radius:8px;">
+                  <h3>${mascota.nombre}</h3>
+                  <p>Solicitudes: ${mascota.solicitudes_count}</p>
+                `;
+        
+                contenedor.appendChild(div);
+              });
+            })
+            .catch(error => {
+              console.error('Error al cargar mascotas:', error);
+            });
+        </script>
+      </div>
+
+    <section class="intro">
+      <div class="introtxt">
+        <h2>PREGUNTAS FRECUENTES SOBRE
+          ADOPCIÓN DE MASCOTAS</h2>
+          <p>
+            En Pethub conectamos personas con su compañero peludo ideal.
+            Sabemos lo importante que es que ningún animal crezca sin una familia,
+            por eso trabajamos día a día junto a cuidadores y fundaciones para darles una segunda oportunidad.
+            
+            Si estás pensando en adoptar, es fundamental que tengas en cuenta el compromiso que esto implica.
+            Una mascota no es solo compañía: es un nuevo integrante de tu familia.
+            Por eso, te recomendamos planificar bien su llegada: asegurate de que todos en casa estén de acuerdo,
+            y que en tu edificio o vivienda se permitan animales. También considerá los gastos mensuales, los cuidados 
+            que va a necesitar para estar sano y feliz, y con quién vas a dejarlo si te vas de vacaciones.
+          </p>
+           <h3>Te dejamos acá un resumen de las preguntas que recibimos siempre así te ayudamos a prepararte en lo que se viene </h3>
+          </div>
+          </section>
+           <section class="preguntas-frecuentes">
+          <div class="preguntas-content container">
+           <div class="preguntas-group">
+          <div class="pregunta">
+            <img src="imagenes/icono1.png"alt="Icon1">
+            <div class="texto">
+            <h2>¿Es necesario completar el formulario? 🐾</h2>
+            <p>
+              Sí, es necesario y obligatorio. Es nuestro deber proteger a las mascotas. Adoptarlas es asumir un compromiso de por vida.
+              Son animales que han sufrido situaciones complejas y que a través del cuidado y amor tanto de nuestro equipo logramos reinsertarlos y prepararlos 
+              para volver a integrar una familia. Tenemos que asegurarnos todos que son el Match ideal, que tanto la mascota se adapta a 
+              las condiciones de vida de la nueva familia como la familia a las características de las mascotas. 
+            </p>
+          </div>
+          </div>
+          <div class="pregunta">
+            <img src="imagenes/icono2.png"alt="Icon2">
+            <div class="texto">
+            <h2>¿Como me preparo para la llegada de mi mascota? 🐾</h2>
+            <p>
+            Primero tenés que saber que las mascotas necesitan un tiempo de adaptación, para conocerte y conocer a todos los integrantes de la familia.
+            Le va a llevar un tiempo reconocersu nuevo hogar, así que paciencia, con amor pronto se sentirá cómoda. Es importante que te asesores con un veterinario
+            para aprender sobre vacunas, cuál es el mejor plan de desparasitación y pueda recomendarte sobre la alimentación adecuada para ella.
+            Asegurate de contar con los elementos básicos para que esté cómoda: una cuchita o colchoneta donde dormir, un platito para comer y tomar agua,
+            una chapita o collar con tus datos y su nombre, y, si es un gatito piedritas y litera.
+            </p>
+          </div>
+            </div>
+        <div class="pregunta">
+          <img src="imagenes/icono3.png"alt="Icon3">
+          <div class="texto">
+          <h2>¿Cuales son los cuidados que debe recibir mi mascota? 🐾</h2>
+          <p>
+            Desparasitación, Vacunación, Alimentación. Todos procesos con los que te irás familiarizando a lo largo de la vida de tu amigo peludo. 
+            Es muy importante que te acerques a un veterinario que pueda recomendarte y enseñarte sobre las vacunas que necesita, cuándo aplicarlas,
+            cómo realizar una correcta desparasitación, según peso, hábitos, edad, y qué alimento cubre las necesidades de tu mascota. 
+          </p>
+        </div>
+          </div>
+      </div>      
+      </div>
+    </section>
+    <section class="adoptar">
+      <div class="adoptar-content">
+        <div class="contenido">
+          <h2>¿Te animás a sumar un nuevo amigo peludo?</h2>
+          <a href="comoadoptar.html" class="btn-2">¿Cómo adoptar?</a>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-content container">
+        <div class="link">
+          <h3>PETHUB</h3>
+          <ul>
+            <li><a href="mascota">Mascotas</a></li>
+            <li><a href="comoadoptar.html">¿Cómo adoptar?</a></li>
+          </ul>
+        </div>
+    </footer>
+</body>
+</html>
+

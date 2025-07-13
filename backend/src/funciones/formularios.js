@@ -1,0 +1,59 @@
+const {Pool} = require('pg');
+
+const dbClient = new Pool({
+  user: 'postgres',
+  password: 'password123',
+  host: 'localhost',
+  port: 5433,
+  database: 'pethub',
+})
+
+async function getAllFormularios() {
+    const result = await dbClient.query('SELECT * FROM formularios_adopcion;');
+    return result.rows;
+}
+
+async function getOneFormulario(id) {
+    const result = await dbClient.query('SELECT * FROM formularios_adopcion WHERE id = $1 LIMIT 1;', [id]);
+    return result.rows[0];
+}
+
+async function createFormulario(
+    fecha,
+    estado,
+    id_mascota,
+    id_usuario,
+    id_cuidador,
+    comentario,
+) {
+    const result = await dbClient.query(
+        'INSERT INTO formularios_adopcion (fecha, estado, id_mascota, id_usuario, id_cuidador, comentario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', 
+        [fecha, estado, id_mascota, id_usuario, id_cuidador, comentario]);
+    if (result.rowCount === 0){
+        return undefined;
+    }
+    return result.rows[0];
+}
+
+async function deleteFormulario(id) {
+    const results = await dbClient.query('DELETE FROM formularios_adopcion WHERE id = $1;', [id]);
+    
+    if (results.rowCount === 0 ) {
+        return undefined;
+    }
+    return id;
+}
+
+
+async function existeEnTabla(tabla, id) {
+    const res = await dbClient.query(`SELECT 1 FROM ${tabla} WHERE id = $1 LIMIT 1`, [id]);
+    return res.rowCount > 0;
+}
+
+module.exports = {
+    getAllFormularios,
+    getOneFormulario,
+    createFormulario,
+    deleteFormulario,
+    existeEnTabla,
+}; 
