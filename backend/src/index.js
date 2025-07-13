@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/../frontend'));
+
 const PORT = process.env.PORT || 3000;
 
 // funciones
@@ -10,6 +13,10 @@ const {
     createMascota,
     deleteMascota
 } = require('./mascotas.js')
+
+const empleadosRouter = require('./empleados.js');
+app.use('/empleados', empleadosRouter);
+
 
 // ruta health
 app.get('/index/health', (req, res) => {
