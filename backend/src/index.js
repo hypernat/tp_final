@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const pool = require('./db');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../frontend'));
+app.use('/imagenes', express.static('imagenes'));
 
 const PORT = process.env.PORT || 3000;
 
@@ -43,6 +45,23 @@ app.get('/index/mascotas/:id', async (req, res) => {
     return res.status(404).json({ error: 'Upsi, mascota no encontrada :('});
   }
   res.json(mascota);
+});
+// mascotas con menos solicitudes
+app.get('/index/mascotas/menos-solicitudes', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT m.id, m.nombre, m.imagen, COUNT(f.id)
+      FROM mascotas m, formularios_adopcion f
+      WHERE m.id = f.id_mascota
+      GROUP BY m.id, m.nombre, m.imagen
+      ORDER BY COUNT(f.id) ASC
+      LIMIT 3;
+    `);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error al obtener mascotas con menos solicitudes:', error);
+    res.status(500).json({ error: 'Error al obtener mascotas' });
+  }
 });
 
 /*
