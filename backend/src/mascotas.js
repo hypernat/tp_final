@@ -48,6 +48,7 @@ async function deleteMascota(id) {
 }
 
 module.exports = {
+    dbClient,
     getAllMascotas,
     getOneMascota,
     createMascota,

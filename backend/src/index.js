@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
 const pool = require('./db');
+const empleadosRouter = require('./empleados.js');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../frontend'));
 app.use('/imagenes', express.static('imagenes'));
+app.use('/empleados', empleadosRouter);
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,8 +20,7 @@ const {
     deleteMascota
 } = require('./mascotas.js')
 
-const empleadosRouter = require('./empleados.js');
-app.use('/empleados', empleadosRouter);
+
 
 
 // ruta health

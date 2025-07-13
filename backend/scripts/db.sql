@@ -29,8 +29,13 @@ create table formularios_adopcion(
 
 create table empleados(
     id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
+    nombre VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
 );
+
+INSERT INTO empleados (nombre, password) VALUES ('juan', '1234');
+
+
 insert into mascotas(nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion)
 values
 ('Toby', 'Perro', 4, 'Mediano', true, '/imagenes/toby.jpeg', 'Obediente y tranquilo.'),
