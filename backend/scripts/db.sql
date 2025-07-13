@@ -17,7 +17,7 @@ create table usuarios(
     tiene_patio BOOLEAN,
     tiene_mas_mascotas BOOLEAN
 );
-create table cuidador(
+create table cuidadores(
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL,
@@ -34,6 +34,3 @@ create table formularios_adopcion(
     id_cuidador INT NOT NULL REFERENCES cuidador(id),
     comentario VARCHAR(200)
 );
-
-
-
