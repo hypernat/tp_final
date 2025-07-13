@@ -35,6 +35,12 @@ create table formularios_adopcion(
     id_cuidador INT NOT NULL REFERENCES cuidador(id),
     comentario VARCHAR(200)
 );
+create table empleados(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
 
 insert into mascotas(nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion)
 values
