@@ -26,14 +26,6 @@ create table usuarios(
     tiene_patio BOOLEAN,
     tiene_mas_mascotas BOOLEAN
 );
-create table cuidador(
-    id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL,
-    tipo VARCHAR(150) NOT NULL,
-    animales_a_cargo INT NOT NULL,
-    disponibilidad_horaria VARCHAR(180) NOT NULL
-);
 create table formularios_adopcion(
     id SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
@@ -107,5 +99,12 @@ VALUES
 ('Maya', 'Gato', 2, 'Pequeño', true, '/imagenes/maya.jpeg', 'Muy mimosa.', 9),
 ('Lola', 'Gato', 3, 'Pequeño', false, '/imagenes/lola.jpeg', 'Alegre y juguetona.', 10),
 ('Chispa', 'Gato', 1, 'Pequeño', true, '/imagenes/chispa.jpeg', 'Muy activa y simpática.', 10);
+
+SELECT m.id, m.nombre, m.imagen, COUNT(f.id)
+FROM mascotas m, formularios_adopcion f
+WHERE m.id = f.id_mascota
+GROUP BY m.id, m.nombre, m.imagen
+ORDER BY COUNT(f.id) ASC
+LIMIT 3;
 
 

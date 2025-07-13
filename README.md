@@ -5,7 +5,7 @@
 ## Entidades y campos 
 - **mascota**: id,nombre, especie, edad_estimada, tamaño, esta_vacunado, descripcion
 - **usuario**: id, nombre, email, numero, dirección, tiene_patio, tiene_mas_mascotas
-- **cuidador**: id, nombre,tipo(voluntario/casa_de_tránsito), animales_a_cargo, disponibilidad
+- **cuidador**: id, nombre,tipo(voluntario/empleado/cuidador_externo), animales_a_cargo, disponibilidad
 - **formularios_adopcion**(tabla intermediaria): id, fecha, estado (puede ser tipo en proceso, rechazada, aprobada),
 comentario,id_cuidador_a_cargo, id_usuario, id_mascota 
 
@@ -39,4 +39,10 @@ make start-backend
 - Si se quiere solo levantar el servidor del frontend
 ```
 make start-frontend
+```
+-Para correr sql en el docker compose:
+```
+entramos a la carpeta backend:
+docker compose up -d
+docker exec -it backend-db-1 psql -U postgres -d pethub 
 ```
