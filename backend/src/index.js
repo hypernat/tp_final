@@ -63,6 +63,7 @@ app.get('/index/mascotas/:id', async (req, res) => {
   }
   res.json(mascota);
 });
+
 // mascotas con menos solicitudes
 app.get('/index/mascotas/menos-solicitudes', async (req, res) => {
   try {
@@ -88,7 +89,6 @@ curl --header "Content-Type: application/json" \
   --data '{"nombre":"nievecita","especie":"conejito","edad_estimada":2,"tamaño":"pequeño","esta_vacunado":true,"imagen":"xyz","descripcion":"le gusta la lechuga y jugar!"}' \
   http://localhost:3000/index/mascotas
 */
-//insert
 app.post('/index/mascotas', async (req, res) => {
 
   if(!req.body.nombre || !req.body.especie || !req.body.edad_estimada || !req.body.tamaño || 
