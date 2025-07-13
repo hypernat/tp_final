@@ -41,7 +41,7 @@ app.listen(PORT, () => {
   console.log("Servidor backend escuchando en PORT",PORT);
 });
 
-
+// ver que hacer si se borra algo que tiene foregin keys asociadas
 //ordenar en carpetas y MODULARIZAR
 //mascotas
 app.get('/index/mascotas', async (req, res) => {
@@ -55,12 +55,6 @@ app.get('/index/mascotas/:id', async (req, res) => {
   }
   res.json(mascota);
 });
-/* PARA PROBAR
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"nombre":"nievecita","especie":"conejito","edad_estimada":2,"tamaño":"pequeño","esta_vacunado":true,"imagen":"xyz","descripcion":"le gusta la lechuga y jugar!"}' \
-  http://localhost:3000/index/mascotas
-*/
 app.post('/index/mascotas', async (req, res) => {
 
   if(!req.body.nombre || !req.body.especie || !req.body.edad_estimada || !req.body.tamaño || 
@@ -108,13 +102,13 @@ app.delete('/index/mascotas/:id', async (req, res) => {
 
     res.json({ status: 'OK', id: mascota });
 });
-app.put('/index/mascotas/:id', async (req, res) => {
+/*app.put('/index/mascotas/:id', async (req, res) => {
   const mascota = await updateMascota(req.params.id);
   if (!mascota) {
     return res.status(404).json({ error: 'Upsi, mascota no encontrada :('});
   }
   res.json({ status: 'OK', id: mascota });
-});
+});*/
 
 //user
 app.get('/index/usuarios', async (req, res) => {
@@ -165,6 +159,16 @@ app.post('/index/usuarios', async (req, res) => {
   }
   res.json({usuario});
 });
+app.delete('/index/usuarios/:id', async (req, res) => {
+
+    const usuario = await deleteUsuario(req.params.id);
+
+    if (!usuario) {
+      return res.status(404).json({error: 'Upsi, usuario no encontrado, no se puede eliminar'})
+    }
+
+    res.json({ status: 'OK', id: usuario });
+});
 
 //formularios
 app.get('/index/formularios', async (req, res) => {
@@ -208,7 +212,16 @@ app.post('/index/formularios', async (req, res) => {
   }
   res.json({formulario});
 });
-// DELETE. /formularios/id
+app.delete('/index/formularios/:id', async (req, res) => {
+
+    const formulario = await deleteFormulario(req.params.id);
+
+    if (!formulario) {
+      return res.status(404).json({error: 'Upsi, formulario no encontrada, no se puede eliminar'})
+    }
+
+    res.json({ status: 'OK', id: formulario });
+});
 // PUT. /formularios/id
 
 //cuidadores
@@ -251,6 +264,15 @@ app.post('/index/cuidador', async (req, res) => {
   }
   res.json({cuidador});
 });
-// DELETE. /cuidadores/id
+app.delete('/index/cuidadores/:id', async (req, res) => {
+
+    const cuidador = await deleteCuidador(req.params.id);
+
+    if (!cuidador) {
+      return res.status(404).json({error: 'Upsi, perfil de cuidador no encontrado, no se puede eliminar'})
+    }
+
+    res.json({ status: 'OK', id: cuidador });
+});
 // PUT. /cuidadores/id
 
