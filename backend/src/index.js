@@ -63,7 +63,6 @@ app.get('/index/mascotas/:id', async (req, res) => {
   }
   res.json(mascota);
 });
-
 // mascotas con menos solicitudes
 app.get('/index/mascotas/menos-solicitudes', async (req, res) => {
   try {
@@ -270,7 +269,7 @@ app.get('/index/cuidadores/:id', async (req, res) => {
   }
   res.json(formulario);
 });
-app.post('/index/cuidador', async (req, res) => {
+app.post('/index/cuidadores', async (req, res) => {
 
   if(!req.body.nombre || !req.body.email || !req.body.tipo || !req.body.animales_a_cargo || 
      !req.body.disponibilidad_horaria) {
