@@ -26,14 +26,6 @@ create table usuarios(
     tiene_patio BOOLEAN,
     tiene_mas_mascotas BOOLEAN
 );
-create table cuidador(
-    id SERIAL PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL,
-    tipo VARCHAR(150) NOT NULL,
-    animales_a_cargo INT NOT NULL,
-    disponibilidad_horaria VARCHAR(180) NOT NULL
-);
 create table formularios_adopcion(
     id SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
