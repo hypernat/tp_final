@@ -6,7 +6,7 @@ const db = require('./db');
 router.post('/login', async (req, res) => {
   const { nombre, password } = req.body;
   try {
-    const result = await db.dbClient.query(
+    const result = await db.query(
       'SELECT * FROM empleados WHERE nombre = $1 AND password = $2',
       [nombre, password]
     );
@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
 // =================== GET ALL ===================
 router.get('/', async (req, res) => {
   try {
-    const result = await db.dbClient.query('SELECT * FROM empleados ORDER BY id ASC');
+    const result = await db.query('SELECT * FROM empleados ORDER BY id ASC');
     res.json(result.rows);
   } catch (error) {
     console.error('Error al obtener empleados:', error);
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 // =================== GET ONE ===================
 router.get('/:id', async (req, res) => {
   try {
-    const result = await db.dbClient.query('SELECT * FROM empleados WHERE id = $1', [req.params.id]);
+    const result = await db.query('SELECT * FROM empleados WHERE id = $1', [req.params.id]);
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Empleado no encontrado' });
     }
@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const result = await db.dbClient.query(
+    const result = await db.query(
       'INSERT INTO empleados (nombre, password) VALUES ($1, $2) RETURNING *',
       [nombre, password]
     );
@@ -70,7 +70,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { nombre, password } = req.body;
   try {
-    const result = await db.dbClient.query(
+    const result = await db.query(
       'UPDATE empleados SET nombre = $1, password = $2 WHERE id = $3 RETURNING *',
       [nombre, password, req.params.id]
     );
@@ -87,7 +87,7 @@ router.put('/:id', async (req, res) => {
 // =================== DELETE ===================
 router.delete('/:id', async (req, res) => {
   try {
-    const result = await db.dbClient.query('DELETE FROM empleados WHERE id = $1 RETURNING *', [req.params.id]);
+    const result = await db.query('DELETE FROM empleados WHERE id = $1 RETURNING *', [req.params.id]);
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Empleado no encontrado' });
     }
