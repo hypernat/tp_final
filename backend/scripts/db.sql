@@ -1,12 +1,21 @@
+create table cuidador(
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    tipo VARCHAR(150) NOT NULL,
+    animales_a_cargo INT NOT NULL,
+    disponibilidad_horaria VARCHAR(180) NOT NULL
+);
+
 create table mascotas(
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
-    especie VARCHAR(50) NOT NULL,
-    edad_estimada INT NOT NULL,
     tamaño VARCHAR(20) NOT NULL,
     esta_vacunado BOOLEAN NOT NULL,
     imagen VARCHAR(200),
-    descripcion VARCHAR(100) NOT NULL
+    descripcion VARCHAR(100) NOT NULL,
+    id_cuidador INT REFERENCES cuidador(id)
+
 );
 create table usuarios(
     id SERIAL PRIMARY KEY,
