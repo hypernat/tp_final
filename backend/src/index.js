@@ -23,7 +23,7 @@ const {
 } = require('./funciones/usuarios');
 
 const {
-  getAllCuidadores,
+  getAllCuidador,
   getOneCuidador,
   createCuidador,
   deleteCuidador,
@@ -259,7 +259,7 @@ app.delete('/index/formularios/:id', async (req, res) => {
 
 //cuidadores
 app.get('/index/cuidadores', async (req, res) => {
-  const cuidadores = await getAllCuidadores();
+  const cuidadores = await getAllCuidador();
   res.json(cuidadores);
 });
 app.get('/index/cuidadores/:id', async (req, res) => {
