@@ -41,9 +41,6 @@ const empleadosRouter = require('./empleados.js');
 app.use('/empleados', empleadosRouter);
 
 
-
-
-
 // ruta health
 app.get('/index/health', (req, res) => {
   res.json({ status: 'todo ok por aca' });
