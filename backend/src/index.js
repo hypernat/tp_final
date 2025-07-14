@@ -41,8 +41,7 @@ const empleadosRouter = require('./empleados.js');
 app.use('/empleados', empleadosRouter);
 
 
-const empleadosRouter = require('./empleados.js');
-app.use('/empleados', empleadosRouter);
+
 
 
 // ruta health
