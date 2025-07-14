@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.id_mascota.value = data.id;
 
     // Validar id_cuidador:
-    const idCuidador = data.refugio_id || data.cuidador_id || null;
+    const idCuidador = data.id_cuidador || null;
 
     if (!idCuidador || idCuidador === 0) {
       msg.textContent = 'La mascota no tiene un cuidador válido.';
@@ -78,17 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Crear formulario de adopción
     const datosAdopcion = {
-      id_usuario,
-      id_mascota: Number(formData.get('id_mascota')),
-      id_cuidador: idCuidador,
-      // comentario: formData.get('comentario'),
-    };
+       fecha: new Date().toISOString().split('T')[0],  
+       estado: 'pendiente',                            
+       id_usuario,
+       id_mascota: Number(formData.get('id_mascota')),
+       id_cuidador: idCuidador,
+       comentario: formData.get('comentario') || null,
+};
+
+console.log('Datos a enviar:', datosAdopcion);
 
     const resAdopcion = await fetch(API_ADOPCIONES, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datosAdopcion),
     });
+
+    const respuestaJson = await resAdopcion.json();
+console.log('Respuesta del backend:', respuestaJson);
+
 
     if (!resAdopcion.ok) throw new Error('Error creando adopción');
 
