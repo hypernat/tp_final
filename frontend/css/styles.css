@@ -300,4 +300,17 @@ h1, h2, h3 {
   color: #83f5f5;        
 }
 
+.titulo-mascotas {
+  color: #000000;
+  
+}
 
+.section{
+  border-radius: 12px;
+  padding: 2rem;
+  
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background-color: white;
+
+  
+}

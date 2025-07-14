@@ -47,10 +47,32 @@ async function deleteMascota(id) {
     return id;
 }
 
+
+async function getAllMascotasConCuidador() {
+  const sql = `
+    SELECT m.*, c.nombre as cuidador_nombre, c.email as cuidador_email, c.disponibilidad_horaria as cuidador_disponibilidad
+    FROM mascotas m
+    LEFT JOIN cuidador c ON m.id_cuidador = c.id
+  `;
+  const result = await dbClient.query(sql);
+  return result.rows;
+}
+
+
+async function getOneCuidador(id) {
+  const result = await dbClient.query(
+    'SELECT * FROM cuidador WHERE id = $1 LIMIT 1',
+    [id]
+  );
+  return result.rows[0]; // devuelve un objeto con el cuidador o undefined si no existe
+}
+
 module.exports = {
     getAllMascotas,
     getOneMascota,
     createMascota,
     deleteMascota,
+    getAllMascotasConCuidador,
+    getOneCuidador,
 }; 
      

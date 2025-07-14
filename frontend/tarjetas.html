@@ -1,0 +1,32 @@
+<div>
+  <div class="card tarjeta-flip">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img src="{{imagen}}" alt="{{nombre}}">
+      </div>
+      <div class="flip-card-back">
+        <h2 class="title is-4">{{nombre}}</h2>
+        <p class="subtitle is-6">{{edad_estimada}} años - {{especie}}</p>
+        <p>{{descripcion}}</p>
+        <p><strong>Tamaño:</strong> {{tamaño}}</p>
+        <p><strong>¿Vacunado?:</strong> {{esta_vacunado}}</p>
+        <footer class="card-footer">
+          <a href="formulario.html?id={{id}}" class="card-footer-item">Adoptar</a>
+          <a href="javascript:void(0)" class="card-footer-item btn-ver-mas"
+             data-nombre="{{nombre}}"
+             data-imagen="{{imagen}}"
+             data-edad="{{edad_estimada}}"
+             data-especie="{{especie}}"
+             data-descripcion="{{descripcion}}"
+             data-tamano="{{tamaño}}"
+             data-vacunado="{{esta_vacunado}}"
+             data-cuidador="{{cuidador}}"
+             data-email="{{email}}"
+             data-disponibilidad="{{disponibilidad}}"
+          >Ver más detalles</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+

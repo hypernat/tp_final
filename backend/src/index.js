@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const pool = require('./db');
+const cors = require('cors');
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/imagenes', express.static('imagenes'));
@@ -39,9 +42,6 @@ const {
 
 const empleadosRouter = require('./empleados.js');
 app.use('/empleados', empleadosRouter);
-
-
-
 
 
 // ruta health
@@ -193,7 +193,7 @@ app.post('/index/usuarios', async (req, res) => {
   if(!usuario) {
     return res.status(500).json({ error: 'Algo fallo al crear el usuario'})
   }
-  res.json({usuario});
+  res.json(usuario);
 });
 app.delete('/index/usuarios/:id', async (req, res) => {
 
@@ -218,20 +218,26 @@ app.get('/index/formularios/:id', async (req, res) => {
   }
   res.json(formulario);
 });
-app.post('/index/formularios', async (req, res) => {
-
-  if(!req.body.fecha || !req.body.estado || !req.body.id_mascota || !req.body.id_usuario || 
-     !req.body.id_cuidador) {
-    return res.status(400).json({ error: 'Faltan campos obligatorios!'})
+app.post('/index/formularios_adopcion', async (req, res) => {
+  if (
+    !req.body.fecha || 
+    !req.body.estado || 
+    !req.body.id_mascota || 
+    !req.body.id_usuario || 
+    !req.body.id_cuidador
+  ) {
+    return res.status(400).json({ error: 'Faltan campos obligatorios!' });
   }
-  
+
   if (!(await existeEnTabla('mascotas', req.body.id_mascota))) {
     return res.status(400).json({ error: 'La mascota no existe' });
   }
+
   if (!(await existeEnTabla('usuarios', req.body.id_usuario))) {
     return res.status(400).json({ error: 'El usuario no existe' });
   }
-  if (!(await existeEnTabla('cuidadores', req.body.id_cuidador))) {
+
+  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
     return res.status(400).json({ error: 'El cuidador no existe' });
   }
 
@@ -241,12 +247,14 @@ app.post('/index/formularios', async (req, res) => {
     req.body.id_mascota, 
     req.body.id_usuario, 
     req.body.id_cuidador, 
-    req.body.comentario
+    req.body.comentario || null
   );
-  if(!formulario) {
-    return res.status(500).json({ error: 'Algo falló al crear el formulario'})
+
+  if (!formulario) {
+    return res.status(500).json({ error: 'Algo falló al crear el formulario' });
   }
-  res.json({formulario});
+
+  res.status(201).json({ formulario });
 });
 app.delete('/index/formularios/:id', async (req, res) => {
 
