@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     );
 
     if (result.rows.length > 0) {
-      res.sendFile(__dirname + '/../frontend/empleados.html');
+      res.sendFile(200);
     } else {
       res.status(401).json({ error: 'Nombre o contraseña incorrectos' });
     }
