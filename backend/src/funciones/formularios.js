@@ -44,6 +44,21 @@ async function deleteFormulario(id) {
     return id;
 }
 
+async function updateFormulario(id,
+    fecha,
+    estado,
+    id_mascota,
+    id_usuario,
+    id_cuidador,
+    comentario,
+ ) {
+    const result = await dbClient.query('UPDATE formularios_adopcion SET fecha = $1, estado = $2, id_mascota = $3, id_usuario = $4, id_cuidador = $5, comentario = $6 WHERE id = $7 RETURNING *;',
+    [fecha, estado, id_mascota, id_usuario, id_cuidador, comentario, id]);
+    if (result.rowCount === 0 ) {
+        return undefined;
+    }
+    return result.rows[0];
+ }
 
 async function existeEnTabla(tabla, id) {
     const res = await dbClient.query(`SELECT 1 FROM ${tabla} WHERE id = $1 LIMIT 1`, [id]);
@@ -56,4 +71,5 @@ module.exports = {
     createFormulario,
     deleteFormulario,
     existeEnTabla,
+    updateFormulario
 }; 

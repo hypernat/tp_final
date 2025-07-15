@@ -27,7 +27,7 @@ async function createCuidador(
 ) {
     const result = await dbClient.query(
         'INSERT INTO cuidador (nombre, email, tipo, animales_a_cargo, disponibilidad_horaria) VALUES ($1, $2, $3, $4, $5) RETURNING *', 
-        [nombre, email, tipo, animales_a_cargo, disponibilidad_horaria,]);
+        [nombre, email, tipo, animales_a_cargo, disponibilidad_horaria]);
     if (result.rowCount === 0){
         return undefined;
     }
@@ -43,9 +43,25 @@ async function deleteCuidador(id) {
     return id;
 }
 
+async function updateCuidador(id,
+    nombre,
+    email,
+    tipo,
+    animales_a_cargo,
+    disponibilidad_horaria,
+ ) {
+    const result = await dbClient.query('UPDATE cuidador SET nombre = $1, email = $2, tipo = $3, animales_a_cargo = $4, disponibilidad_horaria = $5 WHERE id = $6 RETURNING *;',
+        [nombre, email, tipo, animales_a_cargo, disponibilidad_horaria, id]);
+    if (result.rowCount === 0 ) {
+        return undefined;
+    }
+    return result.rows[0];
+ }
+
 module.exports = {
     getAllCuidador,
     getOneCuidador,
     createCuidador,
     deleteCuidador,
+    updateCuidador
 }; 
