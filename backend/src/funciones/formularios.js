@@ -1,4 +1,5 @@
 const {Pool} = require('pg');
+const { deleteMascota } = require('./mascotas');
 
 const dbClient = new Pool({
   user: 'postgres',
@@ -57,6 +58,18 @@ async function updateFormulario(id,
     if (result.rowCount === 0 ) {
         return undefined;
     }
+
+    if (estado.toLowerCase() === 'aceptado'){
+        try {
+            const mascotaEliminaada = await deleteMascota(id_mascota);
+            if (!mascotaEliminaada) {
+                throw new Error('Mascota no encontrada o no se pudo eliminar');
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
     return result.rows[0];
  }
 

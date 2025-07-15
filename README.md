@@ -8,6 +8,7 @@
 - **cuidador**: id, nombre,tipo(voluntario/empleado/cuidador_externo), animales_a_cargo, disponibilidad
 - **formularios_adopcion**(tabla intermediaria): id, fecha, estado (puede ser tipo en proceso, rechazada, aprobada),
 comentario,id_cuidador_a_cargo, id_usuario, id_mascota 
+- **empleados**: id, nombre,password
 
 ## Ideas de funciones
 - panel que muestre las solicitudes

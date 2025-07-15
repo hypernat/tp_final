@@ -40,6 +40,10 @@ async function createMascota(
 }
 
 async function deleteMascota(id) {
+    // Primero borrar formularios que referencian la mascota
+    await dbClient.query('DELETE FROM formularios_adopcion WHERE id_mascota = $1;', [id]);
+
+    // Luego borrar la mascota
     const results = await dbClient.query('DELETE FROM mascotas WHERE id = $1;', [id]);
     
     if (results.rowCount === 0 ) {

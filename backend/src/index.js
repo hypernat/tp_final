@@ -208,6 +208,7 @@ app.put('/index/mascotas/:id', async (req, res) => {
     } catch (error) {
     res.status(500).json({ error: 'Hubo un error actualizando los datos' });
   }
+
 });
 
 //user
@@ -410,6 +411,7 @@ app.delete('/index/formularios/:id', async (req, res) => {
   res.json({ status: 'OK', id: formulario });    
 });
 app.put('/index/formularios/:id', async (req, res) => {
+  console.log('Body recibido:', req.body);
 
   if (!req.body || Object.keys(req.body).length === 0) {
     return res.status(400).send("no se adjunto un body");

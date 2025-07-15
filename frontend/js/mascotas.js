@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const usuarioId = 1; // Reemplazá por el id del usuario real
 
-      fetch('http://localhost:3000/index/formularios_adopcion', {
+      fetch('http://localhost:3000/index/formularios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

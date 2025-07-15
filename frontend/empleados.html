@@ -1,120 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Gestión de Empleados</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solicitudes de Adopción</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
 </head>
-<body class="section">
+<body>
+  <main>
+    <h1>Solicitudes de Adopción</h1>
+    <div id="solicitudes-container"></div>
+  </main>
 
-  <h1 class="title">Panel de Empleados</h1>
+  <footer style="margin-top: 2rem; text-align: center;">
+    <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir al CRUD de empleados
+    </button>
+  </footer>
 
-  <!-- FORMULARIO AGREGAR EMPLEADO -->
-  <div class="box">
-    <h2 class="subtitle">Agregar nuevo empleado</h2>
-    <form id="addEmpleadoForm">
-      <div class="field">
-        <label class="label">Nombre</label>
-        <div class="control">
-          <input class="input" type="text" name="nombre" required>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Contraseña</label>
-        <div class="control">
-          <input class="input" type="password" name="password" required>
-        </div>
-      </div>
-
-      <div class="control">
-        <button class="button is-primary" type="submit">Agregar</button>
-      </div>
-    </form>
-  </div>
-
-  <!-- LISTA DE EMPLEADOS -->
-  <div class="box">
-    <h2 class="subtitle">Empleados registrados</h2>
-    <table class="table is-striped is-fullwidth" id="empleadosTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- javascript insertará las filas de los empleados acá -->
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    const API_URL = '/empleados';
-
-    async function cargarEmpleados() {
-      const res = await fetch(API_URL);
-      const empleados = await res.json();
-      const tbody = document.querySelector('#empleadosTable tbody');
-      tbody.innerHTML = '';
-      empleados.forEach(emp => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${emp.id}</td>
-          <td>${emp.nombre}</td>
-          <td>
-            <button class="button is-small is-warning" onclick="editarEmpleado(${emp.id}, '${emp.nombre}')">Editar</button>
-            <button class="button is-small is-danger" onclick="eliminarEmpleado(${emp.id})">Eliminar</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    document.getElementById('addEmpleadoForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const data = {
-        nombre: form.nombre.value,
-        password: form.password.value
-      };
-      await fetch(API_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      });
-      form.reset();
-      cargarEmpleados();
-    });
-
-    async function eliminarEmpleado(id) {
-      if (confirm('¿Eliminar este empleado?')) {
-        await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-        cargarEmpleados();
-      }
-    }
-
-    async function editarEmpleado(id, nombreActual) {
-      const nuevoNombre = prompt('Nuevo nombre:', nombreActual);
-      const nuevaPassword = prompt('Nueva contraseña:');
-      if (nuevoNombre && nuevaPassword) {
-        await fetch(`${API_URL}/${id}`, {
-          method: 'PUT',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ nombre: nuevoNombre, password: nuevaPassword })
-        });
-        cargarEmpleados();
-      }
-    }
-
-    // Cargar al inicio
-    cargarEmpleados();
-  </script>
-  <div class="buttons mt-5">
-  <a href="index.html" class="button is-link">Volver al Inicio</a>
-  <a href="empleados-login.html" class="button is-info">Volver al Login de Empleados</a>
-</div>
-
+  <script src="js/empleados-acciones.js"></script>
 </body>
 </html>
