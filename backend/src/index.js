@@ -64,10 +64,10 @@ app.get('/index/mascotas', async (req, res) => {
     if (mascotas.length === 0) {
     return res.status(404).json({ error: 'No hay mascotas cargados' });
     }
+    res.json(mascotas);
   } catch (error) {
     res.status(500).json({ error: 'Hubo un error en la busqueda' });
   }
-  res.json(mascotas);
 });
 app.get('/index/mascotas/:id', async (req, res) => {
   try {
