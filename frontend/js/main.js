@@ -1,5 +1,4 @@
-
-const API_ADOPCIONES = 'http://localhost:3000/index/formularios_adopcion';
+const API_ADOPCIONES = 'http://localhost:3000/index/formularios';
 const API_USUARIOS = 'http://localhost:3000/index/usuarios';
 const API_MASCOTAS = 'http://localhost:3000/index/mascotas';
 
@@ -95,7 +94,7 @@ console.log('Datos a enviar:', datosAdopcion);
     });
 
     const respuestaJson = await resAdopcion.json();
-console.log('Respuesta del backend:', respuestaJson);
+    console.log('Respuesta del backend:', respuestaJson);
 
 
     if (!resAdopcion.ok) throw new Error('Error creando adopción');
