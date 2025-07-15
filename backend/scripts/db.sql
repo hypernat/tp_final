@@ -106,6 +106,16 @@ VALUES
 ('Lola', 'Gato', 3, 'Pequeño', false, '/imagenes/lola.jpeg', 'Alegre y juguetona.', 10),
 ('Chispa', 'Gato', 1, 'Pequeño', true, '/imagenes/chispa.jpeg', 'Muy activa y simpática.', 10);
 
+INSERT INTO empleados (nombre, password) 
+VALUES 
+('Ana Torres', 'contraseña123'),
+('Carlos Díaz', 'segura456'),
+('Lucía Gómez', 'lucia789'),
+('Martín Pérez', 'admin321'),
+('Sofía Ramírez', 'sofia2025');
+
+
+
 SELECT m.id, m.nombre, m.imagen, COUNT(f.id)
 FROM mascotas m, formularios_adopcion f
 WHERE m.id = f.id_mascota
