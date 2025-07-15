@@ -69,6 +69,7 @@ async function updateFormulario(id,
             throw error;
         }
     }
+
     return result.rows[0];
  }
 

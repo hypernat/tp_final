@@ -65,10 +65,8 @@ values
 ('Lola', 'Gato', 3, 'Pequeño', false, '/imagenes/lola.jpeg', 'Alegre y juguetona.'),
 ('Chispa', 'Gato', 1, 'Pequeño', true, '/imagenes/chispa.jpeg', 'Muy activa y simpática.');
 
-DELETE FROM mascotas; 
-
 ALTER TABLE mascotas
-ADD COLUMN id_cuidador INT REFERENCES cuidador(id);
+ADD COLUMN IF NOT EXISTS id_cuidador INT REFERENCES cuidador(id);
 
 INSERT INTO cuidador (nombre, email, tipo, animales_a_cargo, disponibilidad_horaria)
 VALUES
