@@ -410,7 +410,7 @@ app.delete('/index/formularios/:id', async (req, res) => {
   res.json({ status: 'OK', id: formulario });    
 });
 app.put('/index/formularios/:id', async (req, res) => {
-
+  console.log('Body recibido:', req.body);
   if (!req.body || Object.keys(req.body).length === 0) {
     return res.status(400).send("no se adjunto un body");
   };

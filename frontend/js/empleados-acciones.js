@@ -63,7 +63,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
-        if (!res.ok) throw new Error('No se pudo actualizar el formulario');
+        if (!res.ok) {
+            const text = await res.text(); 
+            console.error('Error backend:', text);
+            throw new Error('No se pudo actualizar el formulario');
+        }
 
 
         alert(`Formulario #${id} actualizado como ${nuevoEstado}`);
