@@ -14,3 +14,6 @@ run-backend: start-db start-backend
 start-frontend:
 	cd ./frontend && http-server ./ --cors
 
+load-db: 
+	sleep 5
+	docker exec -i backend-db psql -U postgres -d pethub < backend/scripts/db.sql

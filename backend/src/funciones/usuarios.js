@@ -44,9 +44,32 @@ async function deleteUsuario(id) {
     return id;
 }
 
+async function updateUsuario(id,
+    nombre,
+    email, 
+    telefono,
+    direccion,
+    tiene_patio,
+    tiene_mas_mascotas
+ ) {
+    const result = await dbClient.query('UPDATE usuarios SET nombre = $1, email = $2, telefono = $3, direccion = $4, tiene_patio = $5, tiene_mas_mascotas = $6 WHERE id = $7 RETURNING *;',
+        [nombre, email, telefono, direccion, tiene_patio, tiene_mas_mascotas, id]);
+    if (result.rowCount === 0 ) {
+        return undefined;
+    }
+    return result.rows[0];
+ }
+
+async function existeEnTabla(tabla, id) {
+    const res = await dbClient.query(`SELECT 1 FROM ${tabla} WHERE id = $1 LIMIT 1`, [id]);
+    return res.rowCount > 0;
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
     createUsuario,
     deleteUsuario,
+    updateUsuario,
+    existeEnTabla
 }; 
