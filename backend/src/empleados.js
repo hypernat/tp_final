@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     );
 
     if (result.rows.length > 0) {
-      res.sendFile(200);
+      res.json({ success: true});
     } else {
       res.status(401).json({ error: 'Nombre o contraseña incorrectos' });
     }
