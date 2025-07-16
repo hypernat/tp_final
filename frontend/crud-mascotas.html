@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Mascotas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body class="section">
+
+  <h1 class="title">Panel de Mascotas</h1>
+
+  <!-- FORMULARIO AGREGAR MASCOTA -->
+  <div class="box">
+    <h2 class="subtitle">Agregar nueva mascota</h2>
+    <form id="addMascotaForm">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text" name="nombre" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Especie</label>
+        <div class="control">
+          <input class="input" type="text" name="especie" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Edad estimada</label>
+        <div class="control">
+          <input class="input" type="number" name="edad_estimada" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Tamaño</label>
+        <div class="control">
+          <input class="input" type="text" name="tamaño" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" name="esta_vacunado">
+          ¿Está vacunado?
+        </label>
+      </div>
+
+      <div class="field">
+        <label class="label">Imagen</label>
+        <div class="control">
+          <input class="input" type="text" name="imagen" placeholder="imagenes/perro1.jpg">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Descripción</label>
+        <div class="control">
+          <textarea class="textarea" name="descripcion" required></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Cuidador</label>
+        <div class="control">
+          <div class="select">
+            <select name="id_cuidador" id="cuidadorSelect" required></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="control mt-4">
+        <button class="button is-primary" type="submit">Agregar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- LISTA DE MASCOTAS -->
+  <div class="box">
+    <h2 class="subtitle">Mascotas registradas</h2>
+    <table class="table is-striped is-fullwidth" id="mascotasTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Edad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS insertará aquí las filas -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons mt-5">
+    <a href="index.html" class="button is-link">Volver al Inicio</a>
+  </div>
+
+<script>
+const API_URL = 'http://localhost:3000/index/mascotas';
+const API_CUIDADORES = 'http://localhost:3000/index/cuidadores';
+
+async function cargarCuidadores() {
+  const res = await fetch(API_CUIDADORES);
+  const cuidadores = await res.json();
+  const select = document.getElementById('cuidadorSelect');
+  select.innerHTML = '';
+  cuidadores.forEach(c => {
+    const option = document.createElement('option');
+    option.value = c.id;
+    option.textContent = c.nombre;
+    select.appendChild(option);
+  });
+}
+
+async function cargarMascotas() {
+  const res = await fetch(API_URL);
+  const mascotas = await res.json();
+  const tbody = document.querySelector('#mascotasTable tbody');
+  tbody.innerHTML = '';
+  mascotas.forEach(m => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${m.id}</td>
+      <td>${m.nombre}</td>
+      <td>${m.especie}</td>
+      <td>${m.edad_estimada}</td>
+      <td>
+        <button class="button is-small is-warning" onclick="editarMascota(${m.id})">Editar</button>
+        <button class="button is-small is-danger" onclick="eliminarMascota(${m.id})">Eliminar</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+document.getElementById('addMascotaForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    nombre: form.nombre.value,
+    especie: form.especie.value,
+    edad_estimada: parseInt(form.edad_estimada.value),
+    tamaño: form.tamaño.value,
+    esta_vacunado: form.esta_vacunado.checked,
+    imagen: form.imagen.value,
+    descripcion: form.descripcion.value,
+    id_cuidador: parseInt(form.id_cuidador.value),
+  };
+  await fetch(API_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  });
+  form.reset();
+  cargarMascotas();
+});
+
+async function eliminarMascota(id) {
+  if (confirm('¿Eliminar esta mascota?')) {
+    await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+    cargarMascotas();
+  }
+}
+
+async function editarMascota(id) {
+  const res = await fetch(`${API_URL}/${id}`);
+  const m = await res.json();
+
+  const nuevoNombre = prompt('Nuevo nombre:', m.nombre);
+  const nuevaEdad = prompt('Nueva edad:', m.edad_estimada);
+  const nuevaDescripcion = prompt('Nueva descripción:', m.descripcion);
+  const estaVacunado = confirm('¿Está vacunado?');
+
+  const data = {
+    nombre: nuevoNombre,
+    especie: m.especie,
+    edad_estimada: parseInt(nuevaEdad),
+    tamaño: m.tamaño,
+    esta_vacunado: estaVacunado,
+    imagen: m.imagen,
+    descripcion: nuevaDescripcion,
+    id_cuidador: m.id_cuidador
+  };
+
+  await fetch(`${API_URL}/${id}`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  });
+
+  cargarMascotas();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  cargarMascotas();
+  cargarCuidadores();
+});
+</script>
+
+</body>
+</html>
