@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Gestión de Formularios de Adopción</title>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
 </head>
 <body class="section">
+
   <h1 class="title">Panel de Formularios de Adopción</h1>
 
-  <!-- FORMULARIO AGREGAR / EDITAR FORMULARIO -->
+  <!-- FORMULARIO DE REGISTRO / EDICIÓN -->
   <div class="box">
     <h2 class="subtitle" id="form-title">Agregar nuevo formulario</h2>
     <form id="formularioForm">
-      <input type="hidden" name="id" id="form-id" />
+      <input type="hidden" id="form-id" />
+
       <div class="field">
         <label class="label">Fecha</label>
         <div class="control">
-          <input
-            class="input"
-            type="date"
-            name="fecha"
-            id="form-fecha"
-            required
-          />
+          <input class="input" type="date" id="form-fecha" required />
         </div>
       </div>
 
       <div class="field">
         <label class="label">Estado</label>
         <div class="control">
-          <div class="select">
-            <select name="estado" id="form-estado" required>
+          <div class="select is-fullwidth">
+            <select id="form-estado" required>
               <option value="pendiente">Pendiente</option>
               <option value="aceptado">Aceptado</option>
               <option value="rechazado">Rechazado</option>
@@ -46,77 +39,46 @@
       <div class="field">
         <label class="label">ID Mascota</label>
         <div class="control">
-          <input
-            class="input"
-            type="number"
-            name="id_mascota"
-            id="form-id-mascota"
-            required
-            min="1"
-          />
+          <input class="input" type="number" id="form-id-mascota" required />
         </div>
       </div>
 
       <div class="field">
         <label class="label">ID Usuario</label>
         <div class="control">
-          <input
-            class="input"
-            type="number"
-            name="id_usuario"
-            id="form-id-usuario"
-            required
-            min="1"
-          />
+          <input class="input" type="number" id="form-id-usuario" required />
         </div>
       </div>
 
       <div class="field">
         <label class="label">ID Cuidador</label>
         <div class="control">
-          <input
-            class="input"
-            type="number"
-            name="id_cuidador"
-            id="form-id-cuidador"
-            required
-            min="1"
-          />
+          <input class="input" type="number" id="form-id-cuidador" required />
         </div>
       </div>
 
       <div class="field">
         <label class="label">Comentario (opcional)</label>
         <div class="control">
-          <textarea
-            class="textarea"
-            name="comentario"
-            id="form-comentario"
-            rows="2"
-          ></textarea>
+          <textarea class="textarea" id="form-comentario"></textarea>
         </div>
       </div>
 
-      <div class="control">
-        <button class="button is-primary" type="submit" id="submit-btn">
-          Agregar
-        </button>
-        <button
-          class="button is-light"
-          type="button"
-          id="cancel-edit-btn"
-          style="display:none"
-        >
-          Cancelar
-        </button>
+      <div class="field is-grouped">
+        <div class="control">
+          <button id="submit-btn" class="button is-primary" type="submit">Agregar</button>
+        </div>
+        <div class="control">
+          <button id="cancel-edit-btn" class="button is-light" type="button" style="display:none;">Cancelar edición</button>
+        </div>
       </div>
     </form>
   </div>
 
-  <!-- LISTA DE FORMULARIOS -->
+  <!-- TABLA DE FORMULARIOS -->
   <div class="box">
     <h2 class="subtitle">Formularios registrados</h2>
-    <table class="table is-striped is-fullwidth" id="formulariosTable">
+    <table class="table is-fullwidth is-striped" id="formulariosTable">
       <thead>
         <tr>
           <th>ID</th>
@@ -130,168 +92,15 @@
         </tr>
       </thead>
       <tbody>
-        <!-- filas llenadas con JS -->
+        <!-- Se cargan desde JS -->
       </tbody>
     </table>
   </div>
 
-  <script>
-    const API_URL = 'http://localhost:3000/index/formularios';
-
-    // Cargar y mostrar todos los formularios
-    async function cargarFormularios() {
-      try {
-        const res = await fetch(API_URL);
-        if (!res.ok) throw new Error('Error al cargar formularios');
-        const formularios = await res.json();
-        const tbody = document.querySelector('#formulariosTable tbody');
-        tbody.innerHTML = '';
-
-        formularios.forEach((form) => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${form.id}</td>
-            <td>${form.fecha}</td>
-            <td>${form.estado}</td>
-            <td>${form.id_mascota}</td>
-            <td>${form.id_usuario}</td>
-            <td>${form.id_cuidador}</td>
-            <td>${form.comentario || ''}</td>
-            <td>
-              <button class="button is-small is-warning" onclick="editarFormulario(${form.id})">Editar</button>
-              <button class="button is-small is-danger" onclick="eliminarFormulario(${form.id})">Eliminar</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      } catch (error) {
-        alert('No se pudo cargar los formularios.');
-        console.error(error);
-      }
-    }
-
-    // Manejo del formulario agregar/editar
-    const formularioForm = document.getElementById('formularioForm');
-    const formTitle = document.getElementById('form-title');
-    const submitBtn = document.getElementById('submit-btn');
-    const cancelEditBtn = document.getElementById('cancel-edit-btn');
-
-    formularioForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const id = document.getElementById('form-id').value;
-      const fecha = document.getElementById('form-fecha').value;
-      const estado = document.getElementById('form-estado').value;
-      const id_mascota = Number(document.getElementById('form-id-mascota').value);
-      const id_usuario = Number(document.getElementById('form-id-usuario').value);
-      const id_cuidador = Number(document.getElementById('form-id-cuidador').value);
-      const comentario = document.getElementById('form-comentario').value || null;
-
-      if (!fecha || !estado || !id_mascota || !id_usuario || !id_cuidador) {
-        alert('Por favor, complete todos los campos obligatorios.');
-        return;
-      }
-
-      const data = {
-        fecha,
-        estado,
-        id_mascota,
-        id_usuario,
-        id_cuidador,
-        comentario,
-      };
-
-      try {
-        let res;
-        if (id) {
-          // Editar formulario
-          res = await fetch(`${API_URL}/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-        } else {
-          // Crear formulario
-          res = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-        }
-
-        if (!res.ok) {
-          const err = await res.json();
-          throw new Error(err.error || 'Error desconocido');
-        }
-
-        // Reset formulario y recargar tabla
-        formularioForm.reset();
-        document.getElementById('form-id').value = '';
-        formTitle.textContent = 'Agregar nuevo formulario';
-        submitBtn.textContent = 'Agregar';
-        cancelEditBtn.style.display = 'none';
-
-        cargarFormularios();
-      } catch (error) {
-        alert('Error al guardar el formulario: ' + error.message);
-        console.error(error);
-      }
-    });
-
-    // Editar formulario: carga datos en el formulario para editar
-    async function editarFormulario(id) {
-      try {
-        const res = await fetch(`${API_URL}/${id}`);
-        if (!res.ok) throw new Error('Formulario no encontrado');
-        const form = await res.json();
-
-        document.getElementById('form-id').value = form.id;
-        document.getElementById('form-fecha').value = form.fecha;
-        document.getElementById('form-estado').value = form.estado;
-        document.getElementById('form-id-mascota').value = form.id_mascota;
-        document.getElementById('form-id-usuario').value = form.id_usuario;
-        document.getElementById('form-id-cuidador').value = form.id_cuidador;
-        document.getElementById('form-comentario').value = form.comentario || '';
-
-        formTitle.textContent = 'Editar formulario ID ' + form.id;
-        submitBtn.textContent = 'Guardar cambios';
-        cancelEditBtn.style.display = 'inline-block';
-      } catch (error) {
-        alert('No se pudo cargar el formulario para editar');
-        console.error(error);
-      }
-    }
-
-    // Cancelar edición y reset formulario
-    cancelEditBtn.addEventListener('click', () => {
-      formularioForm.reset();
-      document.getElementById('form-id').value = '';
-      formTitle.textContent = 'Agregar nuevo formulario';
-      submitBtn.textContent = 'Agregar';
-      cancelEditBtn.style.display = 'none';
-    });
-
-    // Eliminar formulario
-    async function eliminarFormulario(id) {
-      if (!confirm('¿Está seguro que desea eliminar este formulario?')) return;
-
-      try {
-        const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-        if (!res.ok) throw new Error('Error al eliminar');
-
-        cargarFormularios();
-      } catch (error) {
-        alert('No se pudo eliminar el formulario.');
-        console.error(error);
-      }
-    }
-
-    // Carga inicial
-    cargarFormularios();
-  </script>
-
   <div class="buttons mt-5">
     <a href="index.html" class="button is-link">Volver al Inicio</a>
   </div>
+
+  <script src="js/adopciones.js"></script>
 </body>
 </html>
