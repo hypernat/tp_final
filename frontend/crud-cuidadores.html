@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Cuidadores</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+</head>
+<body class="section">
+
+  <h1 class="title">Panel de Cuidadores</h1>
+
+  <!-- FORMULARIO AGREGAR CUIDADOR -->
+  <div class="box">
+    <h2 class="subtitle">Agregar nuevo cuidador</h2>
+    <form id="addCuidadorForm">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text" name="nombre" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Tipo</label>
+        <div class="control">
+          <input class="input" type="text" name="tipo" placeholder="Ej: refugio, voluntario" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Animales a cargo</label>
+        <div class="control">
+          <input class="input" type="number" name="animales_a_cargo" min="0" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Disponibilidad horaria</label>
+        <div class="control">
+          <input class="input" type="text" name="disponibilidad_horaria" placeholder="Ej: Lunes a Viernes 8 a 18hs" required>
+        </div>
+      </div>
+
+      <div class="control">
+        <button class="button is-primary" type="submit">Agregar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- LISTA DE CUIDADORES -->
+  <div class="box">
+    <h2 class="subtitle">Cuidadores registrados</h2>
+    <table class="table is-striped is-fullwidth" id="cuidadoresTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Tipo</th>
+          <th>Animales a cargo</th>
+          <th>Disponibilidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JavaScript insertará filas aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="buttons mt-5">
+    <a href="index.html" class="button is-link">Volver al Inicio</a>
+  </div>
+
+  <script src="js/cuidadores.js"></script>
+</body>
+</html>
