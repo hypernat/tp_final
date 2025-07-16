@@ -7,8 +7,8 @@ async function cargarTarjetas() {
 
   try {
     const plantilla = await fetch('tarjetas.html').then(r => r.text());
-    const mascotas = await fetch('http://localhost:3000/index/mascotas').then(r => r.json());
-    const cuidadores = await fetch('http://localhost:3000/index/cuidadores').then(r => r.json());
+    mascotas = await fetch('http://localhost:3000/index/mascotas').then(r => r.json());
+    cuidadores = await fetch('http://localhost:3000/index/cuidadores').then(r => r.json());
 
 
     mascotas.forEach(mascota => {
@@ -70,7 +70,7 @@ async function cargarTarjetas() {
 }
 // Eventos para cerrar el modal
 
-document.addEventListener('DOMContentLoaded', cargarTarjetas);
+
 document.querySelector('.modal-close').addEventListener('click', cerrarModal);
 document.querySelector('.modal-background').addEventListener('click', cerrarModal);
 
