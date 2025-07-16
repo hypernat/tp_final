@@ -5,17 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Solicitudes de Adopción</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <main>
-    <h1>Solicitudes de Adopción</h1>
-    <div id="solicitudes-container"></div>
-  </main>
+  <section class="section">
+    <div class="container">
+      <h1 class="title has-text-centered mb-5">Solicitudes de Adopción</h1>
+      <div id="solicitudes-container" class="columns is-multiline"></div>
+    </div>
+  </section>
 
   <footer style="margin-top: 2rem; text-align: center;">
+
     <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
-      Ir al CRUD de empleados
+      Ir a la gestión de empleados
+    </button>
+
+    <button onclick="location.href='crud-cuidadores.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de cuidadores
+    </button>    
+    <button onclick="location.href='crud-formularios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de formularios
+    </button>
+
+    <button onclick="location.href='crud-usuarios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de usuarios
+    </button>
+    <button onclick="location.href='crud-mascotas.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de mascotas
     </button>
   </footer>
 
