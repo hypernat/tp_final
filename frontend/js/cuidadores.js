@@ -75,3 +75,4 @@ async function editarCuidador(id, nombre, email, tipo, animales_a_cargo, disponi
     cargarCuidadores();
   }
 }
+
