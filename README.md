@@ -103,4 +103,4 @@ make start
 
 El equipo de PetHub ❤️
 
-Julieta Corvatta, Brhyan Delgado, Nathaly Figueroa, Agustina Mendoza
+Julieta Corvatta, Brhyan Delgado, Nathaly Figueroa y Agustina Mendoza

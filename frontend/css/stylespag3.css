@@ -156,14 +156,13 @@ ol {
     align-items: center;   
     gap: 2rem;             
     padding: 1rem;
-    flex-direction: column; /* Si querés que los elementos se apilen verticalmente */
+    flex-direction: column; 
   }
   
   .pasos-content {
     max-width: 600px;
     width: 100%;
-    margin: 0 auto; /* Centrar horizontalmente */
-  }
+    margin: 0 auto; }
   
   .pasos-content h2 {
     font-family: 'Poppins', sans-serif;
@@ -197,11 +196,11 @@ ol {
     margin: 2rem 0;
     padding-left: 0;
     margin-left: 0;
-    flex-wrap: nowrap; /* para que no se apilen */
+    flex-wrap: nowrap; 
     width: 100%;
-    max-width: 900px; /* o el ancho que quieras */
+    max-width: 900px; 
     margin-left: auto;
-    margin-right: auto; /* centrar el wrapper */
+    margin-right: auto; 
   }
   
   .gif-formulario img {
@@ -248,14 +247,14 @@ ol {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  padding: 4rem 2rem; /* Aumentamos el alto */
+  padding: 4rem 2rem; 
   text-align: center;
-  font-size: 2rem;    /* Letra más grande */
-  font-weight: 700;   /* Más destacada */
+  font-size: 2rem;    
+  font-weight: 700;  
   border-radius: 0;
   margin: 0;
   width: 100vw;
-  min-height: 300px;  /* Altura mínima para hacerlo más alto */
+  min-height: 300px;  
   display: flex;
   align-items: center;
   justify-content: center;
