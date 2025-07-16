@@ -41,8 +41,9 @@ function mostrarMascotasEnTabla(mascotas) {
       <td>${mascota.id_cuidador ?? ''}</td>
       <td>
         <button class="button is-warning btn-editar" data-id="${mascota.id}">Editar</button>
-        <button class="button is-danger btn-eliminar" data-id="${mascota.id}">Eliminar</button>
-      </td>
+  			<button class="button is-danger btn-eliminar" data-id="${mascota.id}">Eliminar</button>
+			</td>
+
     `;
     tbody.appendChild(tr);
   });
