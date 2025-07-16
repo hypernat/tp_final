@@ -15,7 +15,7 @@ start-frontend:
 	cd ./frontend && http-server ./ --cors
 
 start:
-	make start-frontend & make start-backend
+	make start-frontend & make run-backend
 
 load-db: 
 	sleep 5
