@@ -106,11 +106,16 @@ VALUES
 
 INSERT INTO empleados (nombre, password) 
 VALUES 
-('Ana Torres', 'contraseña123'),
-('Carlos Díaz', 'segura456'),
-('Lucía Gómez', 'lucia789'),
-('Martín Pérez', 'admin321'),
-('Sofía Ramírez', 'sofia2025');
+('agustina', 'contraseña'),
+('julieta', 'contraseña'),
+('alex', 'contraseña'),
+('nataly', 'contraseña'),
+('manuel', 'contraseña'),
+('nicolas', 'contraseña'),
+('denise', 'contraseña'),
+('pedro', 'contraseña'),
+('sofia', 'contraseña');
+
 
 
 
