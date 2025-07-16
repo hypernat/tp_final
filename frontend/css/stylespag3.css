@@ -1,3 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-top: 4rem; /* espacio para el navbar */
+  background: rgb(255, 255, 255);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding-top:70px ;
+}
+
 .navbar.is-transparent {
     background-color: black !important;
     width: 100%;
@@ -8,14 +21,253 @@
     z-index: 1000;
     box-shadow: none;
   }
-  .navbar-item:hover {
+.navbar-item:hover {
     color: white !important;
   }
-  .navbar-item{
+.navbar-item{
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .footer {
+h1, h2, h3 {
+    font-weight: 700;
+  }
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Bebas_Neue' ;
+    src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+  }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+ol {
+    list-style: none;
+  }
+
+.header {
+    height: 600px; 
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(61, 59, 59, 0.7)), url(../imagenes/imagen4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    padding-left: 2rem;    
+    padding-right: 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;       
+    justify-content: flex-start; 
+  }
+  
+.header-content {
+    max-width: 600px;
+    width: 100%;
+  }
+  
+.header-content h1 {
+    margin: 0;
+    font-size: 3rem;
+    text-align: left;
+    font-family: 'Poppins';
+    font-weight: 800;
+  }
+
+.stop-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 3rem auto 0; 
+    padding: 1rem;
+  }
+  
+.stop-img {
+    margin-bottom: 2rem;
+    width: 300px;        
+    height: auto;
+    border-radius: 8px;  
+    object-fit: cover;  
+  }
+  
+.stop-content {
+    flex: 1; 
+    padding-top: 2rem;            
+  }
+
+.stop-content h1 {
+    font-family: 'Bebas_Neue';
+    font-weight: 400;
+    color: black;
+    font-size: 3rem;             
+  }
+
+.stop-content h2 {
+  font-family: 'Poppins';
+  font-weight: 800;
+  color: rgba(146, 5, 5, 0.689);
+  font-size: 2rem;             
+  }
+
+.stop-content p {
+    font-family: 'Poppins';
+    font-weight: 400;
+  }
+
+  .pasos-para-adoptar {
+    display: flex;
+    align-items: center;   
+    gap: 2rem;             
+    padding: 1rem;
+    flex-direction: column; /* Si querés que los elementos se apilen verticalmente */
+  }
+  
+  .pasos-content {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto; /* Centrar horizontalmente */
+  }
+  
+  .pasos-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background-color: rgb(255, 252, 252);
+    color: rgb(4, 4, 4);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); 
+  }
+  
+  .pasos-content ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+    margin-top: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+  
+  ol li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+  
+  .formulario-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding-left: 0;
+    margin-left: 0;
+    flex-wrap: nowrap; /* para que no se apilen */
+    width: 100%;
+    max-width: 900px; /* o el ancho que quieras */
+    margin-left: auto;
+    margin-right: auto; /* centrar el wrapper */
+  }
+  
+  .gif-formulario img {
+    width: 180px;     
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px; 
+    box-shadow: 0 0 10px rgba(88, 0, 0, 0.243);
+  }
+  .formulario-con-imagen {
+    background-color: rgb(11, 11, 11); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .formulario-con-imagen h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+  }
+  
+  .formulario-con-imagen ol {
+    padding-left: 1.5rem;
+  }
+  
+.formulario-con-imagen li {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+  
+.cartel-animales {
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0, 0, 0, 0.7)), url(../imagenes/imagen6.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding: 4rem 2rem; /* Aumentamos el alto */
+  text-align: center;
+  font-size: 2rem;    /* Letra más grande */
+  font-weight: 700;   /* Más destacada */
+  border-radius: 0;
+  margin: 0;
+  width: 100vw;
+  min-height: 300px;  /* Altura mínima para hacerlo más alto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(15, 10, 10, 0.7);
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  }
+
+.footer {
     background-color: #bebebe;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,21 +277,21 @@
     text-align: center;
   }
   
-  .footer-content {
+.footer-content {
     display: flex;
     justify-content: space-around;
     padding: 2rem 1rem;
     color: white;
   }
   
-  .link h3 {
+.link h3 {
     font-size: 20px;
     color: black;
     margin-bottom: 12px
   
   }
   
-  .footer a {
+.footer a {
     color: #ffffff;
     display: inline-block;
     margin-bottom: 8px;
@@ -47,10 +299,10 @@
     font-weight: 400;
   }
   
-  .footer a:hover {
+.footer a:hover {
     color: #000000;        
   }
   
-  .footer a:active {
+.footer a:active {
     color: #83f5f5;        
   }
