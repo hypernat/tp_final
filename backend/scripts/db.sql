@@ -42,32 +42,6 @@ create table empleados(
 );
 
 
-insert into mascotas(nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion)
-values
-('Toby', 'Perro', 4, 'Mediano', true, '/imagenes/toby.jpeg', 'Obediente y tranquilo.'),
-('Thor', 'Perro', 5, 'Grande', true, '/imagenes/thor.jpeg', 'Fuerte y muy leal.'),
-('Simon', 'Perro', 3, 'Mediano', false, '/imagenes/simon.jpeg', 'Activo y curioso.'),
-('Rocco', 'Perro', 5, 'Mediano', false, '/imagenes/rocco.jpeg', 'Leal y protector.'),
-('Robin', 'Perro', 2, 'Pequeño', true, '/imagenes/robin.jpeg', 'Amigable y juguetón.'),
-('Rita', 'Perro', 6, 'Grande', true, '/imagenes/rita.jpeg', 'Muy tranquila y dulce.'),
-('Max', 'Perro', 2, 'Pequeño', true, '/imagenes/max.jpeg', 'Energético y fiel.'),
-('Luna', 'Perro', 3, 'Pequeño', true, '/imagenes/luna.jpeg', 'Muy juguetona y sociable.'),
-('Daisy', 'Perro', 3, 'Mediano', true, '/imagenes/daisy.jpeg', 'Ideal para familias.'),
-('Coco', 'Perro', 6, 'Mediano', true, '/imagenes/coco.jpeg', 'Buen compañero de niños.'),
-('Zoe', 'Gato', 2, 'Pequeño', true, '/imagenes/zoe.jpeg', 'Cariñosa y tranquila.'),
-('Tom', 'Gato', 2, 'Pequeño', false, '/imagenes/tom.jpeg', 'Curioso y travieso.'),
-('Simba', 'Gato', 3, 'Pequeño', false, '/imagenes/simba.jpeg', 'Cariñoso y dormilón.'),
-('Olivia', 'Gato', 3, 'Pequeño', true, '/imagenes/olivia.jpeg', 'Muy tierna y sociable.'),
-('Nina', 'Gato', 1, 'Pequeño', true, '/imagenes/nina.jpeg', 'Curiosa y activa.'),
-('Mimi', 'Gato', 1, 'Pequeño', true, '/imagenes/mimi.jpeg', 'Tierna y dormilona.'),
-('Milo', 'Gato', 2, 'Pequeño', true, '/imagenes/milo.jpeg', 'Tranquilo y cariñoso.'),
-('Maya', 'Gato', 2, 'Pequeño', true, '/imagenes/maya.jpeg', 'Muy mimosa.'),
-('Lola', 'Gato', 3, 'Pequeño', false, '/imagenes/lola.jpeg', 'Alegre y juguetona.'),
-('Chispa', 'Gato', 1, 'Pequeño', true, '/imagenes/chispa.jpeg', 'Muy activa y simpática.');
-
-ALTER TABLE mascotas
-ADD COLUMN IF NOT EXISTS id_cuidador INT REFERENCES cuidador(id);
-
 INSERT INTO cuidador (nombre, email, tipo, animales_a_cargo, disponibilidad_horaria)
 VALUES
 ('María López', 'maria.lopez@example.com', 'Voluntaria', 2, 'Lunes a viernes de 9 a 13 hs'),
@@ -115,8 +89,6 @@ VALUES
 ('denise', 'contraseña'),
 ('pedro', 'contraseña'),
 ('sofia', 'contraseña');
-
-
 
 
 SELECT m.id, m.nombre, m.imagen, COUNT(f.id)
