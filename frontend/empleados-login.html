@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login de Empleados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+  <section class="section">
+    <div class="container" style="max-width: 400px;">
+      <h1 class="title has-text-centered">Zona de empleados</h1>
+
+      <form id="loginForm" class="box">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              name="nombre"
+              id="nombre"
+              required
+              placeholder="Ingresá tu nombre"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Contraseña</label>
+          <div class="control">
+            <input
+              class="input"
+              type="password"
+              name="password"
+              id="password"
+              required
+              placeholder="Ingresá tu contraseña"
+            />
+          </div>
+        </div>
+
+        <div class="field has-text-centered mt-4">
+          <button class="button is-primary" type="submit">Ingresar</button>
+        </div>
+
+        <!-- Mensaje de error -->
+        <p id="errorMsg" class="has-text-danger has-text-centered mt-3 is-hidden"></p>
+      </form>
+    </div>
+
+    <div class="buttons mt-5">
+      <a href="index.html" class="button is-link">Volver al Inicio</a>
+    </div>
+  </section>
+
+  <script>
+    const API_BASE = 'http://localhost:3000';
+
+    const form = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch(`${API_BASE}/empleados/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ nombre, password })
+        });
+
+        if (response.ok) {
+          window.location.href = 'http://localhost:8080/empleados.html';
+        } else {
+          const json = await response.json();
+          errorMsg.textContent = json.error || 'Nombre o contraseña incorrectos';
+          errorMsg.classList.remove('is-hidden');
+        }
+      } catch (err) {
+        errorMsg.textContent = 'Error de red al intentar iniciar sesión';
+        errorMsg.classList.remove('is-hidden');
+      }
+    });
+  </script>
+</body>
+</html>

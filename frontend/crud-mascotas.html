@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRUD Mascotas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Gestión de Mascotas</h1>
+
+      <form id="form-mascota" class="box">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input class="input" type="text" name="nombre" placeholder="Nombre" required />
+          </div>
+        </div>
+
+			<div class="field">
+  			<label class="label">Especie</label>
+  				<div class="control">
+    			<input class="input" type="text" name="especie" placeholder="Especie" required 
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+           title="Solo letras y espacios" />
+  				</div>
+			</div>
+
+
+        <div class="field">
+          <label class="label">Edad estimada</label>
+          <div class="control">
+            <input class="input" type="number" name="edad_estimada" placeholder="Edad estimada" min="0" max="80" required />
+          </div>
+        </div>
+
+      <div class="field">
+        <label class="label">Tamaño</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select id="form-tamaño" name="tamaño" required>
+              <option value="pendiente">Pequeño</option>
+              <option value="aceptado">Mediano</option>
+              <option value="rechazado">Grande</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+        <div class="field">
+          <label class="checkbox">
+            <input type="checkbox" name="esta_vacunado" />
+            ¿Está vacunado?
+          </label>
+        </div>
+
+        <div class="field">
+          <label class="label">Descripción</label>
+          <div class="control">
+            <textarea class="textarea" name="descripcion" placeholder="Descripción" required></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">ID Cuidador</label>
+          <div class="control">
+            <input class="input" type="number" name="id_cuidador" placeholder="ID Cuidador (opcional)" min="1" />
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button id="btn-submit" class="button is-success" type="submit">Crear Mascota</button>
+          </div>
+          <div class="control">
+            <button id="btn-cancelar" class="button is-danger" type="button" style="display:none;">Cancelar</button>
+          </div>
+        </div>
+      </form>
+
+      <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Edad</th>
+            <th>Tamaño</th>
+            <th>Vacunado</th>
+            <th>Descripción</th>
+            <th>ID Cuidador</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-mascotas-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer style="margin-top: 2rem; text-align: center;">
+    <button onclick="location.href='index.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Inicio
+    </button>
+        
+    <button onclick="location.href='empleados-login.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Login de Empleados
+    </button>
+
+    <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de empleados
+    </button>
+
+    <button onclick="location.href='crud-cuidadores.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de cuidadores
+    </button>    
+    <button onclick="location.href='crud-formularios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de formularios
+    </button>
+
+    <button onclick="location.href='crud-usuarios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de usuarios
+    </button>
+    <button onclick="location.href='crud-mascotas.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de mascotas
+    </button>
+  </footer>
+
+  <script src="js/crud-mascotas.js"></script>
+</body>
+</html>

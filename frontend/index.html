@@ -39,37 +39,6 @@
      </div>
      </header>
 
-
-     <section class="animales-destacados">
-      <div class="animales-content container">
-        <h2>⭐¡Conocé a nuestras estrellas en adopción!⭐</h2>
-        <div id="mascotas-menos-solicitudes"></div>  <!-- Este contenedor recibe las mascotas -->
-        <script>
-          fetch('http://localhost:3000/index/mascotas/menos-solicitudes')
-            .then(response => response.json())
-            .then(mascotas => {
-              const contenedor = document.getElementById('mascotas-menos-solicitudes');
-              contenedor.innerHTML = ''; // limpiamos por las dudas
-        
-              mascotas.forEach(mascota => {
-                const div = document.createElement('div');
-                div.classList.add('mascota-card');
-        
-                div.innerHTML = `
-                  <img src="http://localhost:3000/imagenes/${mascota.imagen}" alt="${mascota.nombre}" style="width:200px; border-radius:8px;">
-                  <h3>${mascota.nombre}</h3>
-                  <p>Solicitudes: ${mascota.solicitudes_count}</p>
-                `;
-        
-                contenedor.appendChild(div);
-              });
-            })
-            .catch(error => {
-              console.error('Error al cargar mascotas:', error);
-            });
-        </script>
-      </div>
-
     <section class="intro">
       <div class="introtxt">
         <h2>PREGUNTAS FRECUENTES SOBRE
@@ -143,8 +112,10 @@
         <div class="link">
           <h3>PETHUB</h3>
           <ul>
-            <li><a href="mascota">Mascotas</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mascotas.html">Mascotas</a></li>
             <li><a href="comoadoptar.html">¿Cómo adoptar?</a></li>
+            <li><a href="empleados-login.html"> Empleados </a></li>
           </ul>
         </div>
     </footer>

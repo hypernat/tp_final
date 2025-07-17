@@ -1,7 +1,11 @@
+const {Pool} = require('pg');
+
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',       // porque tu backend corre localmente
-    database: 'pethub',
+    host: process.env.DB_HOST || 'localhost',       // NATI: porfi no borrar variables de entorno
+    database: 'pethub',                             // pq se rompe todo en docker
     password: 'password123',
-    port: 5433,              // puerto mapeado para acceder a PostgreSQL en Docker
+    port: process.env.DB_PORT || 5433,
   });
+
+module.exports = pool;

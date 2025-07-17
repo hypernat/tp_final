@@ -1,0 +1,118 @@
+/* Estilo de la sección completa */
+.seccion-mascotas {
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título aislado */
+.seccion-mascotas .titulo-mascotas {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Grid para que entren 4 por fila */
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Tarjeta y efecto flip */
+.seccion-mascotas .tarjeta-flip {
+  background-color: transparent;
+  width: 100%;
+  height: 350px;
+  perspective: 1000px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.seccion-mascotas .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.seccion-mascotas .tarjeta-flip:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.seccion-mascotas .flip-card-front,
+.seccion-mascotas .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.seccion-mascotas .flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seccion-mascotas .flip-card-back {
+  background-color: #fafafa;
+  color: black;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.seccion-mascotas .card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.seccion-mascotas .card-footer-item {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.seccion-mascotas .card-footer-item:hover {
+  background-color: #333;
+}
+
+/*prueba*/
+
+/* Aumentar z-index del modal para que quede encima del navbar */
+#modal-mascota.modal.is-active {
+  z-index: 1000;
+}
+
+/* Opcional: si el navbar tiene z-index muy alto, subilo más */
+.navbar {
+  z-index: 900;
+  position: relative; /* importante para que z-index funcione */
+}
+
+  #modal-mascota .modal-content {
+  max-width: 500px; /* ancho máximo deseado */
+  width: 90%;       /* ancho responsive */
+  margin: auto;
+  border-radius: 8px;
+  overflow-y: auto; /* si hay mucho contenido que se pueda scrollear */
+  max-height: 80vh; /* para que no ocupe toda la altura */
+  background: white;
+  padding: 1.5rem;
+}

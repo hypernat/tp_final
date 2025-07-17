@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Usuarios</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+</head>
+<body class="section">
+
+  <h1 class="title">Panel de Usuarios</h1>
+
+  <!-- FORMULARIO AGREGAR USUARIO -->
+  <div class="box">
+    <h2 class="subtitle">Agregar nuevo usuario</h2>
+    <form id="addUsuarioForm">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text" name="nombre" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="email" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Teléfono</label>
+        <div class="control">
+          <input class="input" type="tel" name="telefono" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Dirección</label>
+        <div class="control">
+          <input class="input" type="text" name="direccion" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" name="tiene_patio" />
+          Tiene patio
+        </label>
+      </div>
+
+      <div class="field">
+        <label class="checkbox">
+          <input type="checkbox" name="tiene_mas_mascotas" />
+          Tiene más mascotas
+        </label>
+      </div>
+
+      <div class="control">
+        <button class="button is-primary" type="submit">Agregar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- LISTA DE USUARIOS -->
+  <div class="box">
+    <h2 class="subtitle">Usuarios registrados</h2>
+    <table class="table is-striped is-fullwidth" id="usuariosTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Patio</th>
+          <th>Más Mascotas</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas cargadas dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <footer style="margin-top: 2rem; text-align: center;">
+    <button onclick="location.href='index.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Inicio
+    </button>
+        
+    <button onclick="location.href='empleados-login.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Login de Empleados
+    </button>
+
+    <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de empleados
+    </button>
+
+    <button onclick="location.href='crud-cuidadores.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de cuidadores
+    </button>    
+    <button onclick="location.href='crud-formularios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de formularios
+    </button>
+
+    <button onclick="location.href='crud-usuarios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de usuarios
+    </button>
+    <button onclick="location.href='crud-mascotas.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de mascotas
+    </button>
+  </footer>
+
+
+  <script src="js/crud-usuarios.js"></script>
+</body>
+</html>
