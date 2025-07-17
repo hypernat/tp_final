@@ -115,14 +115,6 @@ h1, h2, h3 {
   color: rgba(226, 226, 226, 0.602);
 }
 
-.animales-destacados{
-  padding: 100px 0;
-  position: relative;
-}
-#mascotas-menos-solicitudes {
-  display: flex;
-  gap: 1rem;
-}
 .mascota-card {
   border: 1px solid #ccc;
   padding: 1rem;

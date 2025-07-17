@@ -143,11 +143,4 @@ VALUES
 
 
 
-SELECT m.id, m.nombre, m.imagen, COUNT(f.id)
-FROM mascotas m, formularios_adopcion f
-WHERE m.id = f.id_mascota
-GROUP BY m.id, m.nombre, m.imagen
-ORDER BY COUNT(f.id) ASC
-LIMIT 3;
-
 
