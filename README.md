@@ -91,7 +91,7 @@ make start-frontend
 
 
 - Para correr fronted,backend y base de datos a la vez, desde la raiz hacer:
-```
+```bash
 docker compose build
 docker compose up
 ```
@@ -99,6 +99,16 @@ docker compose up
 
 📸 Captura de frontend,backend y base de datos en funcionamiento:
 ![alt text](captura6-1.jpg)
+
+## 🛠️ Troubleshooting
+
+Si al levantar el proyecto con `docker compose up` surgen errores relacionados con la base de datos, 
+hacer:
+
+```bash
+   docker volume rm tp_final_pgdata
+   docker rm -f pethub-db pethub_backend pethub-frontend
+```
 
 ---
 ✍ Autores
