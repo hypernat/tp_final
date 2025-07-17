@@ -90,9 +90,10 @@ make start-frontend
 ![alt text](captura5.jpg)
 
 
-- Para correr fronted,backend y base de datos a la vez
+- Para correr fronted,backend y base de datos a la vez, desde la raiz hacer:
 ```
-make start
+docker compose build
+docker compose up
 ```
 📌 Presioná CTRL + C para detener la ejecución cuando lo necesites
 

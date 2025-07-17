@@ -118,6 +118,28 @@ VALUES
 ('pedro', 'contraseña'),
 ('sofia', 'contraseña');
 
+INSERT INTO usuarios (nombre, email, telefono, direccion, tiene_patio, tiene_mas_mascotas)
+VALUES
+('Eliana Vallejos', 'eli@vallejos.com', '1122334455', 'Av. Tucuman 555, Piso 3', true, false),
+('Mati Fernandez', 'matias.fernandez@example.com', '1133445566', 'Av. Beiro 456', false, true),
+('Luciana Latorre', 'luciana.Latorre@gmail.com', '1144556677', 'Gurruchaga 789', true, true),
+('Joaquín Ramírez', 'joaquin.ramirez@hotmail.com', '1155667788', 'Acoyte 101', false, false),
+('Julieta Yubero', 'julieta@fiuba.com', '1166778899', 'Florencia 202', true, true),
+('Andrés López', 'andres.lopez@gmail.com', '1177889900', 'Diagonal Sur 303 PB A', false, false),
+('Micaela Díaz', 'mica.diaz@micaela_company.com', '1188990011', 'Jose Hernandez 1876', true, true),
+('Pedro Méndez', 'pedro.mendez@uba.com', '1199001122', 'Av. Belgrano 505', true, false);
+
+INSERT INTO formularios_adopcion (fecha, estado, id_mascota, id_usuario, id_cuidador, comentario)
+VALUES
+('2025-07-10', 'pendiente', 21, 1, 1, 'Me encantó Toby, se parece a uno que tenia cuando era chica y me enamore'),
+('2025-07-11', 'pendiente', 23, 2, 1, 'Tengo experiencia con perros medianos y mucho amor para dar.'),
+('2025-07-12', 'pendiente', 38, 3, 1, 'Estoy buscando un gatito para mi abuela, le encantan y les teje cositas a crochet.'),
+('2025-07-13', 'pendiente', 33, 4, 2, 'Estoy interesado, aunque no tengo patio.'),
+('2025-07-14', 'pendiente', 26, 5, 3, 'Me encantó Rita, se ve muy dulce y compañera, me estoy justo por mudar a una casa mas grande!.'),
+('2025-07-15', 'pendiente', 36, 6, 3, 'Sería buena compañía para mi hijo.'),
+('2025-07-16', 'pendiente', 27, 7, 4, 'Busco un perro chico y enérgico para mi novia que sale a correr.'),
+('2025-07-12', 'pendiente', 37, 8, 6, 'Info.'),
+('2025-07-17', 'pendiente', 40, 2, 10, 'Vi a Chispa en Instagram y me enamoré.');
 
 
 
