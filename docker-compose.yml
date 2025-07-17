@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:17
+    container_name: pethub-db
+    ports:
+      - 5433:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/scripts/db.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=pethub
+    networks:
+      - pethub-network
+
+  backend:
+    build: ./backend
+    container_name: pethub_backend
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=password123
+      - DB_NAME=pethub
+    depends_on:
+      - db
+    networks:
+    - pethub-network
+    volumes:
+    - ./backend:/app
+    command:  sh -c "cd /app && npm run dev"
+
+
+
+  frontend:
+    build: ./frontend
+    container_name: pethub-frontend
+    ports:
+      - 8080:8080
+    depends_on:
+      - backend
+    networks:
+     - pethub-network
+    volumes:
+      - ./frontend:/app
+    command: http-server ./ -p 8080 --cors 
+
+
+networks:
+  pethub-network:
+    driver: bridge
+
+volumes:
+  pgdata:
