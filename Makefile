@@ -20,3 +20,8 @@ start:
 load-db: 
 	sleep 5
 	docker exec -i backend-db psql -U postgres -d pethub < backend/scripts/db.sql
+
+up:
+	docker compose up -d db
+	sleep 6
+	docker compose up -d backend frontend
