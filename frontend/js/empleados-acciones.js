@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const usuario = await fetch(`${API_USUARIOS}/${formulario.id_usuario}`).then(r => r.json());
 
       const div = document.createElement('div');
-      div.className = 'column is-4';
+      div.className = 'formulario-wrapper column is-4'; // <- clase agregada
+
       div.innerHTML = `
-        <div class="card m-2" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 12px;">
+        <div class="formulario-card card">
           <div class="card-content">
             <div class="content">
               <h3 class="title is-5">Solicitud #${formulario.id}</h3>

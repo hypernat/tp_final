@@ -7,12 +7,47 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+  <style>
+    /* Estilo para las tarjetas */
+    .form-card {
+      width: 300px;
+      margin: 1rem auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Para contener bien las tarjetas en grilla */
+    #solicitudes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  </style>
 </head>
 <body>
   <section class="section">
     <div class="container">
       <h1 class="title has-text-centered mb-5">Solicitudes de Adopción</h1>
-      <div id="solicitudes-container" class="columns is-multiline"></div>
+      <div id="solicitudes-container">
+        <!-- Tarjetas de ejemplo -->
+        <div class="form-card">
+          <h2 class="subtitle">Formulario #1</h2>
+          <p><strong>Fecha:</strong> 2025-07-17</p>
+          <p><strong>Comentario:</strong> Este es un comentario largo para probar cómo se ajusta el alto de la tarjeta de forma automática sin romper el diseño. La tarjeta debería extenderse hacia abajo, no hacia los costados.</p>
+        </div>
+
+        <div class="form-card">
+          <h2 class="subtitle">Formulario #2</h2>
+          <p><strong>Fecha:</strong> 2025-07-17</p>
+          <p><strong>Comentario:</strong> Corto.</p>
+        </div>
+        <!-- Más tarjetas se agregan dinámicamente con JS -->
+      </div>
     </div>
   </section>
 
