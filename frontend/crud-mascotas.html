@@ -21,12 +21,15 @@
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Especie</label>
-          <div class="control">
-            <input class="input" type="text" name="especie" placeholder="Especie" required />
-          </div>
-        </div>
+			<div class="field">
+  			<label class="label">Especie</label>
+  				<div class="control">
+    			<input class="input" type="text" name="especie" placeholder="Especie" required 
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+           title="Solo letras y espacios" />
+  				</div>
+			</div>
+
 
         <div class="field">
           <label class="label">Edad estimada</label>
@@ -35,12 +38,18 @@
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Tamaño</label>
-          <div class="control">
-            <input class="input" type="text" name="tamaño" placeholder="Tamaño" required />
+      <div class="field">
+        <label class="label">Tamaño</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select id="form-tamaño" name="tamaño" required>
+              <option value="pendiente">Pequeño</option>
+              <option value="aceptado">Mediano</option>
+              <option value="rechazado">Grande</option>
+            </select>
           </div>
         </div>
+      </div>
 
         <div class="field">
           <label class="checkbox">
@@ -91,6 +100,34 @@
       </table>
     </div>
   </section>
+
+  <footer style="margin-top: 2rem; text-align: center;">
+    <button onclick="location.href='index.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Inicio
+    </button>
+        
+    <button onclick="location.href='empleados-login.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Login de Empleados
+    </button>
+
+    <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de empleados
+    </button>
+
+    <button onclick="location.href='crud-cuidadores.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de cuidadores
+    </button>    
+    <button onclick="location.href='crud-formularios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de formularios
+    </button>
+
+    <button onclick="location.href='crud-usuarios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de usuarios
+    </button>
+    <button onclick="location.href='crud-mascotas.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de mascotas
+    </button>
+  </footer>
 
   <script src="js/crud-mascotas.js"></script>
 </body>

@@ -5,6 +5,15 @@
   <title>Gestión de Formularios de Adopción</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon" />
+
+  <style>
+    td.comentario {
+      max-width: 200px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+  </style>
 </head>
 <body class="section">
 
@@ -58,7 +67,7 @@
       </div>
 
       <div class="field">
-        <label class="label">Comentario (opcional)</label>
+        <label class="label">Comentario</label>
         <div class="control">
           <textarea class="textarea" id="form-comentario"></textarea>
         </div>
@@ -97,9 +106,34 @@
     </table>
   </div>
 
-  <div class="buttons mt-5">
-    <a href="index.html" class="button is-link">Volver al Inicio</a>
-  </div>
+
+  <footer style="margin-top: 2rem; text-align: center;">
+    <button onclick="location.href='index.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Inicio
+    </button>
+        
+    <button onclick="location.href='empleados-login.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Volver al Login de Empleados
+    </button>
+
+    <button onclick="location.href='crud-empleados.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de empleados
+    </button>
+
+    <button onclick="location.href='crud-cuidadores.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de cuidadores
+    </button>    
+    <button onclick="location.href='crud-formularios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de formularios
+    </button>
+
+    <button onclick="location.href='crud-usuarios.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de usuarios
+    </button>
+    <button onclick="location.href='crud-mascotas.html'" style="padding: 0.5rem 1rem; font-size: 1rem;">
+      Ir a la gestión de mascotas
+    </button>
+  </footer>
 
   <script src="js/adopciones.js"></script>
 </body>

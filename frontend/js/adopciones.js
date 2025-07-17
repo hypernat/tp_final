@@ -47,9 +47,9 @@ formularioForm.addEventListener('submit', async (e) => {
   const id_mascota = Number(document.getElementById('form-id-mascota').value);
   const id_usuario = Number(document.getElementById('form-id-usuario').value);
   const id_cuidador = Number(document.getElementById('form-id-cuidador').value);
-  const comentario = document.getElementById('form-comentario').value || null;
+  const comentario = document.getElementById('form-comentario').value;
 
-  if (!fecha || !estado || !id_mascota || !id_usuario || !id_cuidador) {
+  if (!fecha || !estado || !id_mascota || !id_usuario || !id_cuidador || !comentario) {
     alert('Por favor, complete todos los campos obligatorios.');
     return;
   }

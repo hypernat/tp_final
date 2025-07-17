@@ -120,9 +120,12 @@ app.post('/index/mascotas', async (req, res) => {
   return res.status(400).json({ error: 'Edad debe ser un número entero' });
   }
 
-  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
-  return res.status(400).json({ error: 'El cuidador no existe' });
+  if (req.body.id_cuidador !== undefined && req.body.id_cuidador !== null) {
+    if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
+      return res.status(400).json({ error: 'El cuidador no existe' });
+    }
   }
+
 
   const mascota = await createMascota(
     req.body.nombre, 
@@ -183,8 +186,10 @@ app.put('/index/mascotas/:id', async (req, res) => {
   return res.status(400).json({ error: 'Edad debe ser un número entero' });
   }
 
-  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
-  return res.status(400).json({ error: 'El cuidador no existe' });
+  if (req.body.id_cuidador !== undefined && req.body.id_cuidador !== null) {
+    if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
+      return res.status(400).json({ error: 'El cuidador no existe' });
+    }
   }
 
   try {
@@ -366,45 +371,49 @@ app.get('/index/formularios/:id', async (req, res) => {
   }
 });
 app.post('/index/formularios', async (req, res) => {
-console.log('Req.body recibido:', req.body);
-console.log('Tipo id_usuario:', typeof req.body.id_usuario);
+  try {
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).send("No se adjuntó un body");
+    }
 
 
-  if (!req.body || Object.keys(req.body).length === 0) {
-    return res.status(400).send("no se adjunto un body");
-  };
+    const { fecha, estado, id_mascota, id_usuario, id_cuidador, comentario } = req.body;
 
-  if(!req.body.fecha || !req.body.estado || !req.body.id_mascota || !req.body.id_usuario || 
-     !req.body.id_cuidador) {
-    return res.status(400).json({ error: 'Faltan campos obligatorios!'})
+    if (!fecha || !estado || !id_mascota || !id_usuario || !id_cuidador) {
+      return res.status(400).json({ error: 'Faltan campos obligatorios!' });
+    }
+
+    if (!(await existeEnTabla('mascotas', id_mascota))) {
+      return res.status(400).json({ error: 'La mascota no existe' });
+    }
+    if (!(await existeEnTabla('usuarios', id_usuario))) {
+      return res.status(400).json({ error: 'El usuario no existe' });
+    }
+    if (!(await existeEnTabla('cuidador', id_cuidador))) {
+      return res.status(400).json({ error: 'El cuidador no existe' });
+    }
+
+    const formulario = await createFormulario(
+      fecha,
+      estado,
+      id_mascota,
+      id_usuario,
+      id_cuidador,
+      comentario
+    );
+
+    if (!formulario) {
+      return res.status(500).json({ error: 'Algo falló al crear el formulario' });
+    }
+
+    res.status(201).json({ formulario });
+
+  } catch (error) {
+    console.error("Error al crear formulario:", error);
+    res.status(500).json({ error: 'Error interno al crear el formulario' });
   }
-
-  if (!(await existeEnTabla('mascotas', req.body.id_mascota))) {
-    return res.status(400).json({ error: 'La mascota no existe' });
-  }
-
-  if (!(await existeEnTabla('usuarios', req.body.id_usuario))) {
-    return res.status(400).json({ error: 'El usuario no existe' });
-  }
-  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
-    return res.status(400).json({ error: 'El cuidador no existe' });
-  }
-
-  const formulario = await createFormulario(
-    req.body.fecha, 
-    req.body.estado, 
-    req.body.id_mascota, 
-    req.body.id_usuario, 
-    req.body.id_cuidador, 
-    req.body.comentario || null
-  );
-
-  if (!formulario) {
-    return res.status(500).json({ error: 'Algo falló al crear el formulario' });
-  }
-
-  res.status(201).json({ formulario });
 });
+
 app.delete('/index/formularios/:id', async (req, res) => {
   const formulario = await deleteFormulario(req.params.id);
 
@@ -422,7 +431,7 @@ app.put('/index/formularios/:id', async (req, res) => {
   };
 
   if(req.body.fecha === undefined || req.body.estado === undefined || req.body.id_mascota === undefined || 
-    req.body.id_usuario === undefined || req.body.id_cuidador === undefined) {
+    req.body.id_usuario === undefined || req.body.id_cuidador === undefined || req.body.comentario === undefined) {
     return res.status(400).json({ error: 'Faltan campos obligatorios!'})
   }
 
@@ -438,13 +447,13 @@ app.put('/index/formularios/:id', async (req, res) => {
 
   try {
     const auxFormulario = await updateFormulario(
-      req.params.id,
       req.body.fecha,
       req.body.estado,
       req.body.id_mascota,
       req.body.id_usuario,
       req.body.id_cuidador,
-      req.body.comentario
+      req.body.comentario,
+      req.params.id 
     );
 
     if (!auxFormulario) {
