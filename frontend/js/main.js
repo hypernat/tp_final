@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!idCuidador || idCuidador === 0) {
       msg.textContent = 'La mascota no tiene un cuidador válido.';
       msg.className = 'has-text-danger';
-      form.style.display = 'none'; // o deshabilitar el botón enviar
+      form.style.display = 'none'; 
       return;
     }
 
@@ -66,20 +66,29 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     // Crear usuario
     const resUsuario = await fetch(API_USUARIOS, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(datosUsuario)
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datosUsuario),
     });
 
-    if (!resUsuario.ok) throw new Error('Error creando usuario');
+    const respuestaUsuario = await resUsuario.json();
+    console.log('Respuesta usuario:', respuestaUsuario);
 
-    const { id: id_usuario } = await resUsuario.json();
+    if (!resUsuario.ok) {
+     throw new Error(respuestaUsuario.error || 'Error creando usuario');
+    }
+
+    const id_usuario = respuestaUsuario;
+
+    
+
+    
 
     // Crear formulario de adopción
     const datosAdopcion = {
        fecha: new Date().toISOString().split('T')[0],  
        estado: 'pendiente',                            
-       id_usuario,
+       id_usuario:id_usuario.id,
        id_mascota: Number(formData.get('id_mascota')),
        id_cuidador: idCuidador,
        comentario: formData.get('comentario') || null,
@@ -99,18 +108,28 @@ console.log('Datos a enviar:', datosAdopcion);
 
     if (!resAdopcion.ok) throw new Error('Error creando adopción');
 
-    msg.textContent = 'Solicitud enviada correctamente';
-    msg.className = 'has-text-success';
+    mostrarToast('Formulario enviado con éxito', 'is-success');
     form.reset();
 
   } catch (error) {
     console.error(error);
-    msg.textContent = 'Hubo un error enviando la solicitud.';
-    msg.className = 'has-text-danger';
+    mostrarToast(error.message, 'is-danger');
   }
 });
 
 });
+
+function mostrarToast(mensaje, tipo = 'is-success') {
+  const toast = document.getElementById('toast');
+  toast.textContent = mensaje;
+  
+  toast.className = `notification ${tipo} is-light`;
+  toast.style.display = 'block';
+
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 3000); // desaparece a los 3 segundos
+}
 
 
 
