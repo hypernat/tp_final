@@ -327,3 +327,17 @@ h1, h2, h3 {
 
   
 }
+
+#toast {
+  position: fixed;
+  top: 20px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  /* background-color: #48c774;  */
+  /* color: white; */
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}

@@ -249,7 +249,7 @@ app.post('/index/usuarios', async (req, res) => {
     return res.status(400).json({ error: 'Numero de telefono invalido, solo se aceptan numeros argentinos!' });
   }
   
-  const emailAValidar = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailAValidar = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|fi\.uba\.ar|correo\.uba\.ar)$/;
   if (!emailAValidar.test(req.body.email)) {
     return res.status(400).json({ error: 'Email invalido' });
   }
@@ -308,7 +308,7 @@ app.put('/index/usuarios/:id', async (req, res) => {
     return res.status(400).json({ error: 'Numero de telefono invalido, solo se aceptan numeros argentinos!' });
   }
   
-  const emailAValidar = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailAValidar = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|fi\.uba\.ar|correo\.uba\.ar)$/;
   if (!emailAValidar.test(req.body.email)) {
     return res.status(400).json({ error: 'Email invalido' });
   }
@@ -366,6 +366,10 @@ app.get('/index/formularios/:id', async (req, res) => {
   }
 });
 app.post('/index/formularios', async (req, res) => {
+console.log('Req.body recibido:', req.body);
+console.log('Tipo id_usuario:', typeof req.body.id_usuario);
+
+
   if (!req.body || Object.keys(req.body).length === 0) {
     return res.status(400).send("no se adjunto un body");
   };

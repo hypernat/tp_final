@@ -12,6 +12,10 @@
 </head>
 <body>
    <div id="navbar-container"></div>
+   <div id="toast" class="notification is-light" style="display: none; position: fixed; top: 1rem; right: 1rem; z-index: 1000;">
+  Formulario enviado con éxito.
+</div>
+
 
   <section class="section">
     <div class="formulario">
@@ -20,22 +24,28 @@
           <form id="mascota-form">
             <div class="field">
               <label class="label">Nombre</label>
-              <input class="input is-medium" type="text" name="nombre" required />
+              <input class="input is-medium" type="text" name="nombre" placeholder=" Ej: Agustina" 
+              pattern="^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{3,15}$" title="Solo pone tu nombre"  required/>
             </div>
 
             <div class="field">
               <label class="label">Email</label>
-              <input class="input is-medium" type="email" name="email" required />
+              <input class="input is-medium" type="email" name="email" placeholder="Ej: tunombre@gmail.com" 
+              pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+
+              title="Solo se permiten mails con dominios validos , ya sean educativos o de uso personal" required/>
             </div>
 
             <div class="field">
               <label class="label">Teléfono</label>
-            <input class="input is-medium" type="tel" name="telefono" required />
+            <input class="input is-medium" type="tel" name="telefono" placeholder="Ej: 1160378333"
+            pattern="^\d{10,13}" title="Solo numeros Argentinos" required/>
             </div>
 
             <div class="field">
               <label class="label">Dirección</label>
-              <input class="input is-medium" type="text" name="direccion" required />
+              <input class="input is-medium" type="text" name="direccion" placeholder="Ej: Av Paseo Colon 850"
+              pattern="^([A-Za-zÁÉÍÓÚáéíóúÑñ]+\.?\s?)+\d{1,5}(\s?[A-Za-z]*)?$" title="Ingresa una direccion valida" required />
             </div>
 
             <div class="field is-horizontal is-align-items-center">
@@ -56,7 +66,7 @@
 
             <div class="field">
               <label class="label">Contanos sobre vos</label>
-              <textarea class="textarea is-medium" name="comentario" required></textarea>
+              <textarea class="textarea is-medium" name="comentario" placeholder="Escribí algo sobre vos, tu experiencia, tus intereses o por qué querés adoptar."></textarea>
             </div>
 
       <!-- Inputs ocultos que llenamos con JS -->
