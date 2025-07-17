@@ -1,5 +1,5 @@
 const {Pool} = require('pg');
-const { deleteMascota } = require('./mascotas');
+//const { deleteMascota } = require('./mascotas');
 
 const dbClient = new Pool({
   user: 'postgres',
@@ -25,10 +25,10 @@ async function createFormulario(
     id_mascota,
     id_usuario,
     id_cuidador,
-    comentario,
+    comentario
 ) {
     const result = await dbClient.query(
-        'INSERT INTO formularios_adopcion (fecha, estado, id_mascota, id_usuario, id_cuidador, comentario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', 
+    'INSERT INTO formularios_adopcion (fecha, estado, id_mascota, id_usuario, id_cuidador, comentario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
         [fecha, estado, id_mascota, id_usuario, id_cuidador, comentario]);
     if (result.rowCount === 0){
         return undefined;
@@ -45,13 +45,14 @@ async function deleteFormulario(id) {
     return id;
 }
 
-async function updateFormulario(id,
+async function updateFormulario(
     fecha,
     estado,
     id_mascota,
     id_usuario,
     id_cuidador,
-    comentario,
+    comentario,    
+    id
  ) {
     const result = await dbClient.query('UPDATE formularios_adopcion SET fecha = $1, estado = $2, id_mascota = $3, id_usuario = $4, id_cuidador = $5, comentario = $6 WHERE id = $7 RETURNING *;',
     [fecha, estado, id_mascota, id_usuario, id_cuidador, comentario, id]);
@@ -59,7 +60,7 @@ async function updateFormulario(id,
         return undefined;
     }
 
-    if (estado.toLowerCase() === 'aceptado'){
+    /*if (estado.toLowerCase() === 'aceptado'){
         try {
             const mascotaEliminaada = await deleteMascota(id_mascota);
             if (!mascotaEliminaada) {
@@ -68,7 +69,7 @@ async function updateFormulario(id,
         } catch (error) {
             throw error;
         }
-    }
+    }*/
 
     return result.rows[0];
  }
