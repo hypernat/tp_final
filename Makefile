@@ -24,4 +24,4 @@ load-db:
 up:
 	docker compose up -d db
 	sleep 6
-	docker compose up -d backend frontend
+	docker compose up backend frontend
