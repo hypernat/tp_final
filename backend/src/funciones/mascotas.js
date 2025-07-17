@@ -31,7 +31,7 @@ async function createMascota(
     id_cuidador
 ) {
     const result = await dbClient.query(
-        'INSERT INTO MASCOTAS (nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion, id_cuidador) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', 
+        'INSERT INTO mascotas (nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion, id_cuidador) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', 
         [nombre, especie, edad_estimada, tamaño, esta_vacunado, imagen, descripcion, id_cuidador]);
     if (result.rowCount === 0){
         return undefined;

@@ -93,6 +93,7 @@ async function manejarEnvioFormulario(e) {
     edad_estimada: parseInt(form.edad_estimada.value, 10),
     tamaño: form.tamaño.value.trim(),
     esta_vacunado: form.esta_vacunado.checked,
+    imagen:null,
     descripcion: form.descripcion.value.trim(),
     id_cuidador: form.id_cuidador.value ? parseInt(form.id_cuidador.value, 10) : null,
   };

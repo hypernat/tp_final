@@ -120,9 +120,12 @@ app.post('/index/mascotas', async (req, res) => {
   return res.status(400).json({ error: 'Edad debe ser un número entero' });
   }
 
-  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
-  return res.status(400).json({ error: 'El cuidador no existe' });
+  if (req.body.id_cuidador !== undefined && req.body.id_cuidador !== null) {
+    if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
+      return res.status(400).json({ error: 'El cuidador no existe' });
+    }
   }
+
 
   const mascota = await createMascota(
     req.body.nombre, 
@@ -183,8 +186,10 @@ app.put('/index/mascotas/:id', async (req, res) => {
   return res.status(400).json({ error: 'Edad debe ser un número entero' });
   }
 
-  if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
-  return res.status(400).json({ error: 'El cuidador no existe' });
+  if (req.body.id_cuidador !== undefined && req.body.id_cuidador !== null) {
+    if (!(await existeEnTabla('cuidador', req.body.id_cuidador))) {
+      return res.status(400).json({ error: 'El cuidador no existe' });
+    }
   }
 
   try {

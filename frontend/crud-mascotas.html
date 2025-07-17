@@ -21,12 +21,15 @@
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Especie</label>
-          <div class="control">
-            <input class="input" type="text" name="especie" placeholder="Especie" required />
-          </div>
-        </div>
+			<div class="field">
+  			<label class="label">Especie</label>
+  				<div class="control">
+    			<input class="input" type="text" name="especie" placeholder="Especie" required 
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" 
+           title="Solo letras y espacios" />
+  				</div>
+			</div>
+
 
         <div class="field">
           <label class="label">Edad estimada</label>
@@ -35,12 +38,18 @@
           </div>
         </div>
 
-        <div class="field">
-          <label class="label">Tamaño</label>
-          <div class="control">
-            <input class="input" type="text" name="tamaño" placeholder="Tamaño" required />
+      <div class="field">
+        <label class="label">Tamaño</label>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select id="form-tamaño" name="tamaño" required>
+              <option value="pendiente">Pequeño</option>
+              <option value="aceptado">Mediano</option>
+              <option value="rechazado">Grande</option>
+            </select>
           </div>
         </div>
+      </div>
 
         <div class="field">
           <label class="checkbox">
