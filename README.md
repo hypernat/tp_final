@@ -53,6 +53,7 @@ make run-backend
 📌 Presioná CTRL + C para detener la ejecución cuando lo necesites
 
 📸 Captura del backend en funcionamiento:
+
 ![alt text](captura1.jpg)
 
 - Si solo se quiere levantar la base de datos:
